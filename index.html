@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>엑셀 선생님 — 농협 직원용</title>
-<meta name="description" content="하고 싶은 일을 고르면 엑셀에 칠 수식을 알려 드립니다. 엑셀 2021 이상.">
+<meta name="description" content="하고 싶은 일과 표 모양만 적으면, AI에게 물어볼 엑셀 질문을 만들어 드립니다. 엑셀 2021 이상.">
 <style>
 :root{
   --ivory:#F6F6F1; --ivory2:#ECECE4; --ink:#20251F; --ink2:#4A5048; --ink3:#80857D;
@@ -24,84 +24,66 @@ h1{font-size:30px;line-height:1.2;margin:0 0 6px;font-weight:800}
 h2{font-size:20px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
 .step{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--green);color:var(--white);font-size:15px;font-weight:700;flex:none}
 section{margin-bottom:30px}
-.cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-.case{all:unset;cursor:pointer;background:var(--white);border:1px solid var(--line);padding:14px;font-weight:700;font-size:16px;line-height:1.4;min-height:64px}
-.case:hover{border-color:var(--ink2)}
-.case:focus-visible{outline:3px solid var(--green);outline-offset:2px}
-.case[aria-pressed="true"]{background:var(--green);color:var(--white);border-color:var(--green)}
-.situ{background:var(--white);border:1px solid var(--line);padding:14px 16px;margin:0 0 22px;font-size:16px}
-.seg{display:flex;margin:0 0 10px}
-.seg button{font:inherit;font-weight:700;font-size:15px;padding:8px 18px;border:1px solid var(--ink);background:var(--white);color:var(--ink);cursor:pointer;border-radius:0}
-.seg button+button{border-left:0}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--white)}
-.seg button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
-.xlwin{border:1px solid #c8c8c0;background:var(--white)}
-.xltitle{display:flex;align-items:center;gap:10px;background:#EEEEE8;border-bottom:1px solid #d9d9d2;padding:6px 12px;font-size:13px;color:var(--ink3)}
-.xltitle b{color:var(--ink)}
-.xlfx{display:flex;border-bottom:1px solid #d9d9d2;font-size:14px;min-height:36px}
-.namebox{width:68px;flex:none;border-right:1px solid #d9d9d2;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700}
-.fxlab{width:36px;flex:none;border-right:1px solid #d9d9d2;display:flex;align-items:center;justify-content:center;font-style:italic;color:var(--ink3);font-family:Georgia,serif}
-.fxval{flex:1;min-width:0;padding:7px 10px;font-family:var(--mono);overflow-wrap:anywhere}
-.enterkey{display:inline-block;border:1px solid var(--ink);border-bottom-width:3px;padding:0 8px;margin-left:8px;font-family:var(--font);font-size:12px;font-weight:700;background:var(--ivory)}
-.xltabs{display:flex;border-top:1px solid #d9d9d2;background:#EEEEE8;font-size:12px}
-.xltabs span{background:var(--white);padding:5px 14px;border-right:1px solid #d9d9d2;font-weight:700;color:var(--green);box-shadow:inset 0 -3px 0 var(--green)}
-.gridbox{overflow-x:auto;background:var(--white)}
-table.xl{border-collapse:collapse;font-size:14px;min-width:100%}
-table.xl th,table.xl td{border:1px solid #d9d9d2;padding:4px 8px;white-space:nowrap;height:30px}
-table.xl thead th,table.xl tbody th{background:#EEEEE8;color:var(--ink3);font-weight:600;text-align:center;font-size:12px}
-table.xl tbody th{width:34px}
-table.xl td.h{font-weight:700;background:#F3F5F0}
-table.xl td.in{background:#E3EDE5}
-table.xl td.out{outline:3px solid var(--gold);outline-offset:-3px;background:#FFFDF6}
-table.xl td.out.empty{color:var(--ink3);font-style:italic}
-table.xl td.sel{outline:2px solid var(--green);outline-offset:-2px}
-table.xl td.typing{position:relative}
-table.xl td .typed{position:absolute;left:0;top:0;bottom:0;z-index:2;display:flex;align-items:center;padding:0 8px;background:var(--white);white-space:nowrap;font-family:var(--mono);font-style:normal;color:var(--ink);box-shadow:inset 0 0 0 2px var(--green)}
-.caret::after{content:"";display:inline-block;width:1px;height:1.1em;margin-left:1px;background:var(--ink);vertical-align:-2px;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin:8px 0 0}
-.legend span::before{content:"";display:inline-block;width:12px;height:12px;margin-right:5px;vertical-align:-1px;border:1px solid #d9d9d2}
-.legend .l1::before{background:#E3EDE5}.legend .l2::before{background:#FFFDF6;outline:2px solid var(--gold);outline-offset:-2px}.legend .l3::before{background:var(--white);outline:2px solid var(--green);outline-offset:-2px}
-.result{border:4px solid var(--gold);outline:1px solid var(--ink);outline-offset:3px;background:var(--white);padding:16px 18px;margin:4px 4px 0}
-.formula{font-family:var(--mono);font-size:22px;font-weight:700;line-height:1.5;overflow-wrap:anywhere;color:var(--ink)}
-.formula .ref{color:var(--green);background:var(--ivory2);padding:0 2px;white-space:nowrap}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.hint{color:var(--ink2);font-size:15px;margin:0 0 10px}
+textarea,input[type=text],input[type=number]{font:inherit;border:1px solid var(--ink3);border-radius:0;background:var(--white);color:var(--ink)}
+textarea:focus,input:focus{outline:3px solid var(--green);outline-offset:0}
+textarea{width:100%;min-height:100px;padding:10px 12px;font-size:17px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}
+.chips span{font-size:14px;color:var(--ink3);margin-right:2px}
+.chip{font:inherit;font-size:14px;font-weight:600;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--white);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--green);color:var(--white);border-color:var(--green)}
+.chip:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.card{background:var(--white);border:1px solid var(--line);padding:16px 18px}
+.row{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:8px 0}
+.row label{font-weight:600}
+.row input[type=number],.row input.cell{width:84px;text-align:center;font-weight:700;padding:6px 8px;background:var(--ivory)}
+.row small{color:var(--ink3);font-size:13px}
+.cols{margin:6px 0 0;padding:0;list-style:none}
+.cols li{display:grid;grid-template-columns:64px 1fr 40px;gap:8px;margin-bottom:8px}
+.cols input{font:inherit;padding:6px 10px;border:1px solid var(--ink3);border-radius:0;background:var(--ivory);color:var(--ink);min-width:0}
+.cols input.letter{text-align:center;font-weight:700;font-family:var(--mono)}
+.cols button{font:inherit;border:1px solid var(--line);background:var(--white);cursor:pointer;color:var(--ink3);font-size:18px}
+.cols-head{display:grid;grid-template-columns:64px 1fr 40px;gap:8px;font-size:13px;color:var(--ink3);font-weight:600;margin-top:10px}
 .btn{font:inherit;font-weight:700;font-size:16px;padding:10px 18px;border:1px solid var(--ink);background:var(--ink);color:var(--white);cursor:pointer;border-radius:0}
 .btn.ghost{background:var(--white);color:var(--ink)}
+.btn.big{font-size:18px;padding:14px 26px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .btn:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+input[aria-invalid="true"]{border-color:var(--ink);background:#f1e6cc!important}
+.err{background:#f1e6cc;border-left:4px solid var(--ink);padding:8px 12px;font-size:15px;margin-top:10px}
+.xlwin{border:1px solid #c8c8c0;background:var(--white);margin-top:14px}
+.xltitle{background:#EEEEE8;border-bottom:1px solid #d9d9d2;padding:6px 12px;font-size:13px;color:var(--ink3)}
+.xltitle b{color:var(--ink)}
+.xlfx{display:flex;border-bottom:1px solid #d9d9d2;font-size:14px;min-height:34px}
+.namebox{width:68px;flex:none;border-right:1px solid #d9d9d2;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700}
+.fxlab{width:36px;flex:none;display:flex;align-items:center;justify-content:center;font-style:italic;color:var(--ink3);font-family:Georgia,serif}
+.gridbox{overflow-x:auto;background:var(--white)}
+table.xl{border-collapse:collapse;font-size:14px;min-width:100%}
+table.xl th,table.xl td{border:1px solid #d9d9d2;padding:4px 8px;white-space:nowrap;height:30px;min-width:44px}
+table.xl thead th,table.xl tbody th{background:#EEEEE8;color:var(--ink3);font-weight:600;text-align:center;font-size:12px}
+table.xl tbody th{width:34px;min-width:34px}
+table.xl td.h{font-weight:700;background:#F3F5F0}
+table.xl td.out{outline:2px solid var(--green);outline-offset:-2px;color:var(--ink3);font-style:italic}
+table.xl tr.more td,table.xl tr.more th{height:22px;color:var(--ink3);text-align:center;font-size:12px}
+.cap{font-size:13px;color:var(--ink3);margin:6px 0 0}
+.result{border:4px solid var(--gold);outline:1px solid var(--ink);outline-offset:3px;background:var(--white);padding:16px 18px;margin:4px 4px 0}
+pre.prompt{white-space:pre-wrap;word-break:break-word;background:var(--ivory);padding:14px;font-family:var(--font);font-size:14.5px;line-height:1.55;margin:0;max-height:340px;overflow:auto;border-left:4px solid var(--green)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
 .copied{font-size:15px;color:var(--green);font-weight:700}
-.answer{background:var(--ivory2);padding:12px 16px;font-size:16px}
-ul.mean{list-style:none;margin:0;padding:0}
-ul.mean li{background:var(--white);border:1px solid var(--line);padding:10px 14px;margin-bottom:8px}
-ul.mean code,details code{font-family:var(--mono);font-weight:700;background:var(--ivory2);padding:0 4px;font-size:15px}
+ol.after{margin:0;padding-left:22px}
+ol.after li{margin:6px 0}
+ol.after code,details code{font-family:var(--mono);font-weight:700;background:var(--ivory2);padding:0 4px;font-size:15px;overflow-wrap:anywhere}
 details{background:var(--white);border:1px solid var(--line);margin-bottom:10px}
 details>summary{cursor:pointer;padding:14px 16px;font-weight:700;list-style:none}
 details>summary::-webkit-details-marker{display:none}
 details>summary::before{content:"＋";display:inline-block;width:22px;color:var(--green)}
 details[open]>summary::before{content:"－"}
 details .inner{padding:0 16px 16px}
-.q{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;padding:10px 0;border-top:1px solid var(--ivory2)}
-.q:first-child{border-top:0}
-.q label{font-weight:600}
-.q small{display:block;color:var(--ink3);font-weight:400;font-size:13px}
-.q input[type=text],.q input[type=number]{width:130px;font:inherit;font-weight:700;font-size:17px;text-align:center;padding:6px 8px;border:1px solid var(--ink3);border-radius:0;background:var(--ivory)}
-.q input:focus{outline:3px solid var(--green);background:var(--white)}
-.q input[aria-invalid="true"]{border-color:var(--ink);background:#f1e6cc}
-.q.toggle{grid-template-columns:auto 1fr}
-.q.toggle input{width:20px;height:20px;accent-color:var(--green)}
-.err{background:#f1e6cc;border-left:4px solid var(--ink);padding:8px 12px;font-size:15px;margin-top:8px}
-ul.more{margin:0;padding-left:20px}
-ul.more li{margin:6px 0}
-textarea{width:100%;min-height:72px;font:inherit;font-size:16px;padding:10px;border:1px solid var(--ink3);border-radius:0;background:var(--ivory);resize:vertical}
-textarea:focus{outline:3px solid var(--green);background:var(--white)}
-pre.prompt{white-space:pre-wrap;background:var(--ivory2);padding:14px;font-family:var(--font);font-size:15px;margin:12px 0 0;border-left:4px solid var(--green)}
 footer{color:var(--ink3);font-size:13px;border-top:1px solid var(--line);padding-top:14px}
 @media (max-width:520px){
   body{font-size:16px}
   h1{font-size:25px}
-  .formula{font-size:18px}
-  .q{grid-template-columns:1fr}
-  .q input[type=text],.q input[type=number]{width:100%}
+  .btn.big{width:100%}
 }
 </style>
 
@@ -109,317 +91,257 @@ footer{color:var(--ink3);font-size:13px;border-top:1px solid var(--line);padding
 <header>
   <div class="bar"></div>
   <h1>엑셀 선생님</h1>
-  <p class="sub">하고 싶은 일을 고르면, 엑셀에 칠 수식을 알려 드려요.</p>
+  <p class="sub">하고 싶은 일과 표 모양만 적으면, AI에게 물어볼 질문을 만들어 드려요.</p>
   <span class="pill">엑셀 2021 이상</span><span class="pill">농협 직원용</span>
-  <div class="notice"><b>진짜 이름·전화번호·금액은 넣지 마세요.</b> 이 앱은 "몇 번째 칸인지"만 물어봐요.<br>
-  배우기는 노트북이나 휴대폰에서, 실제로 치는 건 업무용 PC에서 하세요.</div>
+  <div class="notice"><b>진짜 이름·전화번호·금액은 넣지 마세요.</b> 열 제목과 몇 행부터인지만 적으면, 값은 앱이 가짜로 채워요.<br>
+  질문은 노트북이나 휴대폰의 AI에게 하고, 받은 수식은 업무용 PC에서 직접 입력하세요.</div>
 </header>
 
 <section>
   <h2><span class="step">1</span>무엇을 하고 싶나요?</h2>
-  <div class="cases" id="cases" role="group" aria-label="하고 싶은 일"></div>
-</section>
-
-<p class="situ" id="situ"></p>
-
-<section id="xlsec">
-  <h2><span class="step">2</span>엑셀에 이런 표가 있어요</h2>
-  <div class="seg" id="seg" role="group" aria-label="입력 전과 입력 후"><button type="button" data-p="before" aria-pressed="true">입력 전</button><button type="button" data-p="after" aria-pressed="false">입력 후</button></div>
-  <div class="xlwin">
-    <div class="xltitle"><b>엑셀선생님_연습.xlsx</b><span>연습용 가짜 자료</span></div>
-    <div class="xlfx"><span class="namebox" id="namebox" title="지금 고른 칸"></span><span class="fxlab">fx</span><span class="fxval" id="fxval"></span></div>
-    <div class="gridbox"><table class="xl" id="grid"></table></div>
-    <div class="xltabs"><span id="sheettab"></span></div>
-  </div>
-  <div class="legend"><span class="l1">수식이 보는 칸</span><span class="l2">결과가 나오는 칸</span><span class="l3">지금 고른 칸</span></div>
-  <p class="answer" id="answer" hidden></p>
+  <textarea id="wish" placeholder="예) 신청 명단에서 안 온 사람만 따로 뽑고 싶어요"></textarea>
+  <div class="chips" id="chips"><span>예시로 채워 보기</span></div>
 </section>
 
 <section>
-  <h2><span class="step">3</span><span id="where"></span></h2>
-  <div class="result" aria-live="polite">
-    <div class="formula" id="formula"></div>
+  <h2><span class="step">2</span>내 표는 이렇게 생겼어요</h2>
+  <p class="hint">엑셀 화면을 보면서 적어 주세요. 열 제목만 적으면 돼요.</p>
+  <div class="card">
+    <div class="row">
+      <label for="header">제목 줄</label><input type="number" id="header" min="1" inputmode="numeric"><span>행</span>
+    </div>
+    <div class="row">
+      <label for="from">자료</label><input type="number" id="from" min="1" inputmode="numeric"><span>행부터</span>
+      <input type="number" id="to" min="1" inputmode="numeric" aria-label="자료 끝 행"><span>행까지</span><small>끝 행은 대략이어도 괜찮아요</small>
+    </div>
+    <div class="cols-head"><span>열</span><span>열 제목</span><span></span></div>
+    <ul class="cols" id="cols"></ul>
+    <button class="btn ghost" type="button" id="addCol">+ 열 추가</button>
+    <div class="row" style="margin-top:8px">
+      <label for="out">결과를 낼 칸</label><input type="text" id="out" class="cell" autocapitalize="characters" spellcheck="false" placeholder="F7"><small>모르면 비워 두세요. AI가 정해 줘요.</small>
+    </div>
+    <div class="err" id="err" hidden></div>
+  </div>
+  <div class="xlwin" aria-label="내 표 미리보기">
+    <div class="xltitle"><b>내 표 미리보기</b> · 값은 가짜예요</div>
+    <div class="xlfx"><span class="namebox" id="namebox"></span><span class="fxlab">fx</span></div>
+    <div class="gridbox"><table class="xl" id="grid"></table></div>
+  </div>
+  <p class="cap">AI에게도 이 모양 그대로 보내요. 내 화면과 다르면 위에서 고쳐 주세요.</p>
+</section>
+
+<section>
+  <h2><span class="step">3</span>질문을 복사해서 AI에게 붙여 넣으세요</h2>
+  <div class="result">
+    <pre class="prompt" id="prompt"></pre>
     <div class="actions">
-      <button class="btn" type="button" id="show">▶ 엑셀에서 쳐 보기</button>
-      <button class="btn ghost" type="button" id="copy">수식 복사</button>
+      <button class="btn big" type="button" id="copy">질문 복사</button>
       <span class="copied" id="copied" hidden>복사했어요</span>
     </div>
   </div>
+  <p class="cap">클로드(claude.ai)나 챗지피티(chatgpt.com)에서 새 대화를 열고 붙여 넣으세요.</p>
 </section>
 
 <section>
-  <h2><span class="step">4</span>이런 뜻이에요</h2>
-  <ul class="mean" id="mean"></ul>
+  <h2><span class="step">4</span>답이 오면</h2>
+  <ol class="after">
+    <li>AI가 그린 표에서 <b>「← 여기」</b> 칸을 찾아요.</li>
+    <li>그 칸에 수식을 붙여 넣고 <b>Enter</b>. 아래로 채우라고 하면 칸 오른쪽 아래 작은 네모를 두 번 눌러요.</li>
+    <li>AI가 알려 준 <b>확인 방법</b>으로 맞는지 봐요. 처음이면 가짜 자료 3줄로 먼저 해 보세요.</li>
+  </ol>
 </section>
 
 <section>
-  <details id="mine">
-    <summary>내 표에 맞게 바꾸기</summary>
-    <div class="inner">
-      <form id="qform" autocomplete="off" novalidate></form>
-      <div class="err" id="err" hidden></div>
-    </div>
+  <details id="keybox" hidden>
+    <summary>이 예시의 정답 (실제 엑셀로 확인한 수식)</summary>
+    <div class="inner" id="key"></div>
   </details>
   <details>
-    <summary>더 알아보기 (다른 방법·조심할 점)</summary>
-    <div class="inner"><ul class="more" id="more"></ul>
-      <p style="margin:12px 0 0">같은 표로 연습하려면 <a href="엑셀선생님_연습.xlsx">연습용 엑셀 파일</a>을 받아서 노란 칸에 쳐 보세요.</p></div>
-  </details>
-  <details>
-    <summary>여기 없는 일은? AI 선생님에게 물어보기</summary>
-    <div class="inner">
-      <p style="margin:0 0 10px">하고 싶은 일을 쓰면, 클로드나 챗지피티에 붙여 넣을 질문을 만들어 드려요. 진짜 자료는 넣지 마세요.</p>
-      <textarea id="wish" placeholder="예) 출장비 명단에서 사업장별로 인원과 금액을 한 번에 보고 싶어요"></textarea>
-      <pre class="prompt" id="prompt"></pre>
-      <div class="actions"><button class="btn" type="button" id="copyPrompt">질문 복사</button><span class="copied" id="copiedPrompt" hidden>복사했어요</span></div>
-    </div>
+    <summary>연습 파일로 먼저 해 보기</summary>
+    <div class="inner"><p style="margin:0">예시 5개의 표가 들어 있는 <a href="엑셀선생님_연습.xlsx">연습용 엑셀 파일</a>이에요. 위 「예시로 채워 보기」로 질문을 만들어 AI에게 묻고, 받은 수식을 노란 칸에 쳐 보세요.</p></div>
   </details>
 </section>
 
-<footer>개인 학습용이며 농협의 공식 자료가 아닙니다. 예시의 이름·번호·금액은 모두 가짜입니다. 수식은 연습 표로 먼저 확인하고 업무에 쓰세요.</footer>
+<footer>개인 학습용이며 농협의 공식 자료가 아닙니다. 예시의 이름·번호·금액은 모두 가짜입니다. AI가 준 수식은 꼭 확인하고 업무에 쓰세요.</footer>
 </div>
 
 <script>
 const NAMES=["김하늘","이바다","박구름","최들판","정냇물","강산들","조햇살","윤바람","장노을","임새벽","한겨울","오봄비"];
-const CAME=["김하늘","박구름","최들판","강산들","조햇살","윤바람","임새벽","한겨울","남궁별"];
-
-/* sheet: 연습 표 {열: [6행 머리, 7행부터 값]}. out: 수식 치는 칸. results(v): 기본값일 때 엔터 결과 {칸: 값} */
-const CASES=[
-{
-  id:"absent", title:"신청했는데 안 온 사람 찾기", out:"F7",
-  situ:"교육 신청자 명단과 실제로 온 사람 명단이 있어요. 신청만 하고 안 온 사람을 골라내고 싶어요.",
-  fields:[{k:"list",t:"range",label:"신청자 이름이 있는 곳",v:"A7:A18"},{k:"came",t:"range",label:"온 사람 이름이 있는 곳",v:"D7:D15"}],
-  sheet:{A:["신청자",...NAMES],D:["온 사람",...CAME],F:["안 온 사람"]},
-  build:v=>`=FILTER(${v.list},COUNTIF(${v.came},${v.list})=0,"모두 옴")`,
-  mean:v=>[`<code>COUNTIF(${v.came},${v.list})</code> 신청자 한 명씩, 온 사람 명단에 몇 번 있는지 세요.`,`<code>=0</code> 한 번도 없으면 안 온 사람이에요.`,`<code>FILTER(${v.list}, …)</code> 그런 사람만 골라서 아래로 쭉 보여 줘요.`],
-  results:()=>({F7:"이바다",F8:"정냇물",F9:"장노을",F10:"오봄비"}),
-  answer:"이바다, 정냇물, 장노을, 오봄비 — 4명이 나와요.",
-  more:v=>[`수식 아래 칸들이 비어 있어야 해요. 막혀 있으면 <code>#SPILL!</code>이 나와요.`,`신청자 옆에 '참석/불참'을 쓰고 싶으면 옆 칸에 <code>=IF(COUNTIF(${fix(v.came)},${first(v.list)})&gt;0,"참석","불참")</code> 을 치고 아래로 채우세요.`,"이름 앞뒤에 빈칸이 있으면 다른 이름으로 봐요."]
-},
-{
-  id:"lookup", title:"코드를 보고 품목명 채우기", out:"C7",
-  situ:"판매표에는 품목코드만 있어요. 옆에 있는 기준표를 보고 품목명을 채우고 싶어요.",
-  fields:[{k:"key",t:"cell",label:"코드가 있는 첫 칸",v:"A7"},{k:"codes",t:"range",label:"기준표의 코드가 있는 곳",v:"H7:H9"},{k:"names",t:"range",label:"기준표에서 가져올 값이 있는 곳",hint:"품목명이면 I7:I9, 단가면 K7:K9",v:"I7:I9"}],
-  sheet:{A:["품목코드","001","010","002","099","001","010"],B:["수량",2,5,3,2,4,3],C:["품목명"],H:["품목코드","001","002","010"],I:["품목명","비료A","사료B","포장자재C"],J:["단위","포","포","묶음"],K:["단가",15000,24000,3500]},
-  down:6,
-  build:v=>`=XLOOKUP(${v.key},${fix(v.codes)},${fix(v.names)},"미등록")`,
-  mean:v=>[`<code>XLOOKUP(${v.key}, …)</code> ${v.key}의 코드를 기준표에서 찾아요.`,`찾은 줄에서 <code>${fix(v.names)}</code>의 값을 가져와요. 없으면 '미등록'.`,`<code>$</code>는 '고정' 표시예요. 아래로 복사해도 기준표 자리가 안 움직여요.`],
-  results:()=>({C7:"비료A",C8:"포장자재C",C9:"사료B",C10:"미등록",C11:"비료A",C12:"포장자재C"}),
-  answer:"C7에 치고 아래로 채우면: 비료A, 포장자재C, 사료B, 미등록, 비료A, 포장자재C. '099'는 기준표에 없어서 '미등록'이에요.",
-  more:()=>["C7에 치고, 칸 오른쪽 아래 작은 네모를 두 번 누르면 아래로 채워져요.","'001'처럼 앞에 0이 있는 코드는 판매표와 기준표가 둘 다 글자여야 찾아요. 한쪽이 숫자 1로 바뀌면 '미등록'이 나와요.","$는 범위를 고르고 F4 키를 누르면 붙어요.","예전 방식은 VLOOKUP이에요. XLOOKUP이 더 쉽고 실수가 적어요."]
-},
-{
-  id:"sumifs", title:"사업장별로 금액 더하기", out:"H7",
-  situ:"판매 기록에 사업장과 금액이 섞여 있어요. 사업장마다 금액을 더하고 싶어요.",
-  fields:[{k:"sum",t:"range",label:"더할 금액이 있는 곳",v:"C7:C15"},{k:"who",t:"range",label:"사업장 이름이 있는 곳",v:"B7:B15"},{k:"me",t:"cell",label:"합계표의 사업장 이름 첫 칸",v:"G7"},
-          {k:"byMonth",t:"bool",label:"한 달 것만 더하기",v:false},{k:"dates",t:"range",label:"날짜가 있는 곳",v:"A7:A15",when:"byMonth"},{k:"year",t:"num",label:"연도",v:2026,when:"byMonth"},{k:"month",t:"num",label:"월",v:9,when:"byMonth"}],
-  sheet:{A:["판매일","2026-09-03","2026-09-15","2026-09-28","2026-10-02","2026-10-11","2026-10-20","2026-09-30","2026-10-31","2026-11-01"],B:["사업장","본점","가지점","본점","나지점","본점","가지점","나지점","가지점","본점"],C:["금액",120000,80000,45000,60000,150000,30000,25000,70000,99000],G:["사업장","본점","가지점","나지점"],H:["합계"]},
-  down:3,
-  build:v=>v.byMonth
-    ?`=SUMIFS(${fix(v.sum)},${fix(v.who)},${v.me},${fix(v.dates)},">="&DATE(${+v.year},${+v.month},1),${fix(v.dates)},"<"&EDATE(DATE(${+v.year},${+v.month},1),1))`
-    :`=SUMIFS(${fix(v.sum)},${fix(v.who)},${v.me})`,
-  mean:v=>[`<code>SUMIFS(${fix(v.sum)}, …)</code> 이 금액들을 더해요.`,`<code>${fix(v.who)},${v.me}</code> 단, 사업장이 ${v.me} 칸의 이름과 같은 줄만요.`].concat(v.byMonth?[`<code>DATE·EDATE</code> 부분은 '${+v.month}월 1일부터 다음 달 1일 전까지'라는 뜻이에요. 그래서 ${+v.month}월 것만 더해요.`]:[]),
-  results:v=>v.byMonth
-    ?({2026:{9:{H7:165000,H8:80000,H9:25000},10:{H7:150000,H8:100000,H9:60000}}}[+v.year]||{})[+v.month]||null
-    :{H7:414000,H8:180000,H9:85000},
-  answer:v=>v.byMonth
-    ?({9:"본점 165,000 · 가지점 80,000 · 나지점 25,000. 11월 1일 99,000원은 안 들어가요.",10:"본점 150,000 · 가지점 100,000 · 나지점 60,000."}[+v.month]||"")
-    :"H7에 치고 아래로 채우면: 본점 414,000 · 가지점 180,000 · 나지점 85,000.",
-  more:v=>[`H7에 치고 아래로 채우면 다른 사업장도 계산돼요. 사업장 이름 칸(${v.me})만 한 줄씩 내려가요.`,`사업장 이름을 직접 쓰기 귀찮으면 빈 칸에 <code>=UNIQUE(${v.who})</code> 를 치세요. 이름이 한 번씩만 나와요.`,"합계·개수·평균을 한 번에 보려면 삽입 → 피벗 테이블도 좋아요.","'한 달 것만 더하기'는 위 '내 표에 맞게 바꾸기'에서 켤 수 있어요. 날짜가 글자로 되어 있으면(왼쪽 정렬) 안 맞아요."]
-},
-{
-  id:"dup", title:"두 번 신청한 사람 찾기", out:"D7",
-  situ:"신청 명단에 같은 사람이 두 번 들어갔어요. 이름이 같아도 사업장이 다르면 다른 사람이에요.",
-  fields:[{k:"names",t:"range",label:"이름이 있는 곳",v:"B7:B14"},{k:"places",t:"range",label:"사업장이 있는 곳",v:"C7:C14",when:"!nameOnly"},{k:"nameOnly",t:"bool",label:"이름만 같아도 중복으로 보기",v:false}],
-  sheet:{A:["신청번호",1,2,3,4,5,6,7,8],B:["성명","김하늘","이바다","박구름","김하늘","최들판","이바다","정냇물","최들판"],C:["사업장","본점","가지점","본점","본점","나지점","나지점","가지점","나지점"],D:["중복?"]},
-  down:8,
-  build:v=>v.nameOnly
-    ?`=IF(COUNTIF(${fix(v.names)},${first(v.names)})>1,"중복","")`
-    :`=IF(COUNTIFS(${fix(v.names)},${first(v.names)},${fix(v.places)},${first(v.places)})>1,"중복","")`,
-  mean:v=>v.nameOnly
-    ?[`<code>COUNTIF</code> 같은 이름이 몇 번 있는지 세요.`,`<code>&gt;1</code> 2번 이상이면 '중복'이라고 써요.`]
-    :[`<code>COUNTIFS</code> 이름과 사업장이 둘 다 같은 줄이 몇 개인지 세요.`,`<code>&gt;1</code> 2개 이상이면 '중복'이라고 써요. 아니면 빈칸.`],
-  results:v=>v.nameOnly
-    ?{D7:"중복",D8:"중복",D10:"중복",D11:"중복",D12:"중복",D14:"중복"}
-    :{D7:"중복",D10:"중복",D11:"중복",D14:"중복"},
-  answer:v=>v.nameOnly
-    ?"6줄에 '중복'이 나와요. 그런데 이바다는 가지점·나지점이라 사실 다른 사람일 수 있어요."
-    :"본점 김하늘 2줄, 나지점 최들판 2줄에 '중복'. 이바다는 사업장이 달라서 다른 사람으로 봐요.",
-  more:v=>[`D7에 치고 아래로 채우세요.`,`중복을 뺀 명단만 보고 싶으면 빈 칸에 <code>=UNIQUE(${first(v.names)}:${last(v.places||v.names)})</code> 를 치세요.`,"데이터 → 중복된 항목 제거도 있지만 원본이 바로 지워져요. 복사본에서 하세요."]
-},
-{
-  id:"mask", title:"전화번호 가운데 가리기", out:"C7",
-  situ:"명단을 다른 곳에 보내기 전에, 전화번호 가운데를 ****로 가리고 싶어요.",
-  fields:[{k:"tel",t:"cell",label:"전화번호가 있는 첫 칸",v:"B7"}],
-  sheet:{A:["성명",...NAMES.slice(0,6)],B:["전화번호","010-0000-1001","010-0000-1038","01000001075","010-0000-1112","010-0000-1149","01000001186"],C:["가린 번호"]},
-  down:6,
-  build:v=>`=LEFT(${v.tel},3)&"-****-"&RIGHT(${v.tel},4)`,
-  mean:v=>[`<code>LEFT(${v.tel},3)</code> 앞 3자리를 가져와요.`,`<code>RIGHT(${v.tel},4)</code> 끝 4자리를 가져와요.`,`<code>&amp;</code> 앞 3자리 + "-****-" + 끝 4자리를 이어 붙여요.`],
-  results:()=>({C7:"010-****-1001",C8:"010-****-1038",C9:"010-****-1075",C10:"010-****-1112",C11:"010-****-1149",C12:"010-****-1186"}),
-  answer:"C7에 치고 아래로 채우면 모두 010-****-1001 같은 모양이 돼요. '-' 없이 적힌 번호도 같은 모양이 돼요.",
-  more:()=>["가린 번호는 수식이라, 원래 번호를 지우면 같이 사라져요. 가린 칸을 복사 → 값만 붙여넣기(Ctrl+Alt+V → 값) 한 뒤 원래 번호 열을 지운 복사본을 보내세요.","'-' 없는 번호가 숫자로 바뀌어 앞의 0이 사라졌다면(1000001075처럼) 맞지 않아요. 그 열을 텍스트로 바꾸고 다시 입력하세요.","번호가 모두 010-1234-5678 모양이면 <code>=REPLACE(B7,5,4,\"****\")</code> 도 돼요."]
-}
+/* 예시: 연습 파일과 같은 표. key는 실제 엑셀(Formula2)로 검산한 수식과 결과 */
+const EXAMPLES=[
+{id:"absent",chip:"안 온 사람 찾기",header:6,from:7,to:18,out:"F7",
+ wish:"교육 신청자 명단(A열)과 실제로 온 사람 명단(D열)을 비교해서, 신청했는데 안 온 사람만 F열에 뽑고 싶어요.",
+ sheet:{A:["신청자",...NAMES],D:["온 사람","김하늘","박구름","최들판","강산들","조햇살","윤바람","임새벽","한겨울","남궁별"],F:["안 온 사람"]},
+ key:{formula:'=FILTER(A7:A18,COUNTIF(D7:D15,A7:A18)=0,"모두 옴")',how:"F7에 한 번만 치면 아래로 저절로 나와요.",result:"이바다, 정냇물, 장노을, 오봄비 (4명)"}},
+{id:"lookup",chip:"코드로 품목명 채우기",header:6,from:7,to:12,out:"C7",
+ wish:"판매표의 품목코드(A열)를 보고, 오른쪽 기준표(H~K열)에서 품목명을 찾아 C열에 채우고 싶어요. 기준표에 없는 코드는 '미등록'으로 해 주세요.",
+ sheet:{A:["품목코드","001","010","002","099","001","010"],B:["수량",2,5,3,2,4,3],C:["품목명"],H:["품목코드","001","002","010"],I:["품목명","비료A","사료B","포장자재C"],J:["단위","포","포","묶음"],K:["단가",15000,24000,3500]},
+ key:{formula:'=XLOOKUP(A7,$H$7:$H$9,$I$7:$I$9,"미등록")',how:"C7에 치고 C12까지 아래로 채워요.",result:"비료A, 포장자재C, 사료B, 미등록, 비료A, 포장자재C"}},
+{id:"sumifs",chip:"사업장별 합계",header:6,from:7,to:15,out:"H7",
+ wish:"판매 기록(A~C열)에서 사업장별로 금액을 더해서, G~H열 합계표의 H열에 내고 싶어요.",
+ sheet:{A:["판매일","2026-09-03","2026-09-15","2026-09-28","2026-10-02","2026-10-11","2026-10-20","2026-09-30","2026-10-31","2026-11-01"],B:["사업장","본점","가지점","본점","나지점","본점","가지점","나지점","가지점","본점"],C:["금액",120000,80000,45000,60000,150000,30000,25000,70000,99000],G:["사업장","본점","가지점","나지점"],H:["합계"]},
+ key:{formula:"=SUMIFS($C$7:$C$15,$B$7:$B$15,G7)",how:"H7에 치고 H9까지 아래로 채워요.",result:"본점 414,000 · 가지점 180,000 · 나지점 85,000"}},
+{id:"dup",chip:"두 번 신청한 사람",header:6,from:7,to:14,out:"D7",
+ wish:"신청 명단에서 이름과 사업장이 둘 다 같은 줄을 찾아, D열에 '중복'이라고 표시하고 싶어요.",
+ sheet:{A:["신청번호",1,2,3,4,5,6,7,8],B:["성명","김하늘","이바다","박구름","김하늘","최들판","이바다","정냇물","최들판"],C:["사업장","본점","가지점","본점","본점","나지점","나지점","가지점","나지점"],D:["중복?"]},
+ key:{formula:'=IF(COUNTIFS($B$7:$B$14,B7,$C$7:$C$14,C7)>1,"중복","")',how:"D7에 치고 D14까지 아래로 채워요.",result:"7·10·11·14행에 '중복' (본점 김하늘, 나지점 최들판)"}},
+{id:"mask",chip:"전화번호 가리기",header:6,from:7,to:12,out:"C7",
+ wish:"전화번호(B열)의 가운데 네 자리를 ****로 가려서 C열에 쓰고 싶어요. '-' 없이 적힌 번호도 섞여 있어요.",
+ sheet:{A:["성명",...NAMES.slice(0,6)],B:["전화번호","010-0000-1001","010-0000-1038","01000001075","010-0000-1112","010-0000-1149","01000001186"],C:["가린 번호"]},
+ key:{formula:'=LEFT(B7,3)&"-****-"&RIGHT(B7,4)',how:"C7에 치고 C12까지 아래로 채워요.",result:"모두 010-****-1001 같은 모양"}}
 ];
 
-/* ---------- 공용 ---------- */
+/* 열 제목을 보고 가짜 값 3개를 고른다. 앞에 있는 것이 먼저 맞는다 */
+const FAKE=[
+ [/전화|연락처|휴대|핸드폰/,["010-0000-1001","010-0000-1038","010-0000-1075"]],
+ [/주민|생년/,["900101","850315","770720"]],
+ [/코드/,["001","010","002"]],
+ [/날짜|일자|일$|기간/,["2026-09-03","2026-09-15","2026-10-02"]],
+ [/금액|합계|단가|매출|잔액|비용|수수료|이자|원\)?$/,[120000,80000,45000]],
+ [/수량|개수|인원|건수|점수|나이/,[2,5,3]],
+ [/사업장|지점|부서|소속|점포|지역/,["본점","가지점","나지점"]],
+ [/품목|상품|제품|물품/,["비료A","사료B","포장자재C"]],
+ [/주소/,["○○군 가동","○○군 나동","○○군 다동"]],
+ [/번호|순번|no/i,[1,2,3]],
+ [/성명|이름|고객|조합원|신청자|참석자|담당|직원|대상/,["김하늘","이바다","박구름"]],
+ [/여부|구분|상태/,["O","X","O"]]
+];
+const fakeFor=t=>{for(const [re,v] of FAKE) if(re.test(t)) return v; return ["예시1","예시2","예시3"]};
+
 const $=s=>document.querySelector(s);
-const fix=r=>r.replace(/([A-Z]+)(\d+)/g,"$$$1$$$2");
-const first=r=>r.split(":")[0];
-const last=r=>r.split(":").pop();
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
 const colNum=c=>[...c].reduce((n,ch)=>n*26+ch.charCodeAt(0)-64,0);
 function colName(n){let s="";while(n>0){const m=(n-1)%26;s=String.fromCharCode(65+m)+s;n=Math.floor((n-1)/26)}return s}
-const RE={cell:/^[A-Z]{1,3}[1-9]\d{0,6}$/,range:/^([A-Z]{1,3})([1-9]\d{0,6}):([A-Z]{1,3})([1-9]\d{0,6})$/};
-const val=(x,v)=>typeof x==="function"?x(v):x;
+const RE={col:/^[A-Z]{1,2}$/,cell:/^[A-Z]{1,2}[1-9]\d{0,5}$/};
+/* 진짜 번호처럼 보이는 것. 010-0000-으로 시작하는 연습용 번호는 통과 */
+const REAL=[/01[016789][-. ]?(?!0000)\d{3,4}[-. ]?\d{4}/,/\d{6}[- ]?[1-4]\d{6}/];
 
-/* phase: before(입력 전) → typing(수식 치는 중) → after(엔터 친 뒤). playId가 바뀌면 진행 중인 재생을 멈춘다 */
-let cur=CASES[0], vals={}, phase="before", typed="", entering=false, playId=0;
-const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
-const wait=ms=>new Promise(r=>setTimeout(r,ms));
-function reset(){phase="before";typed="";entering=false;playId++}
+let S, ex=null;
+function blank(){return {wish:"",header:6,from:7,to:"",out:"",cols:[{c:"A",t:""},{c:"B",t:""},{c:"C",t:""}]}}
 
-/* 켜고 끄는 선택·연도·월은 results가 따로 판단한다. 칸·범위만 기본값과 같으면 연습 표 결과를 보여 준다 */
-function isDefault(){return cur.fields.every(f=>!visible(f)||["bool","num"].includes(f.t)||String(vals[f.k])===String(f.v))}
-function visible(f){if(!f.when)return true;return f.when.startsWith("!")?!vals[f.when.slice(1)]:!!vals[f.when]}
+function load(e){
+  ex=e;
+  S=e?{wish:e.wish,header:e.header,from:e.from,to:e.to,out:e.out,cols:Object.entries(e.sheet).map(([c,a])=>({c,t:a[0],vals:a.slice(1)}))}:blank();
+  $("#wish").value=S.wish; $("#header").value=S.header; $("#from").value=S.from; $("#to").value=S.to; $("#out").value=S.out;
+  renderCols(); renderChips(); update();
+}
+function edited(){ if(ex){ex=null;S.cols.forEach(c=>delete c.vals);renderChips()} update() }
 
-function renderCases(){
-  $("#cases").innerHTML=CASES.map(c=>`<button class="case" type="button" data-id="${c.id}" aria-pressed="${c===cur}">${c.title}</button>`).join("");
-  $("#cases").querySelectorAll(".case").forEach(b=>b.onclick=()=>{cur=CASES.find(c=>c.id===b.dataset.id);init()});
+function renderChips(){
+  $("#chips").innerHTML="<span>예시로 채워 보기</span>"+EXAMPLES.map(e=>`<button class="chip" type="button" data-id="${e.id}" aria-pressed="${ex===e}">${e.chip}</button>`).join("")+`<button class="chip" type="button" data-id="">지우기</button>`;
+  $("#chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>load(EXAMPLES.find(e=>e.id===b.dataset.id)||null));
 }
-function init(){
-  vals=Object.fromEntries(cur.fields.map(f=>[f.k,f.v])); reset();
-  renderCases(); $("#situ").textContent=cur.situ;
-  $("#sheettab").textContent=`${CASES.indexOf(cur)+1}_${cur.title}`;
-  renderForm(); update();
+function renderCols(){
+  $("#cols").innerHTML=S.cols.map((c,i)=>`<li><input class="letter" data-i="${i}" data-f="c" value="${esc(c.c)}" maxlength="2" autocapitalize="characters" spellcheck="false" aria-label="열 문자"><input data-i="${i}" data-f="t" value="${esc(c.t)}" placeholder="${i===0?"예) 성명":i===1?"예) 사업장":"예) 금액"}" aria-label="${esc(c.c)}열 제목"><button type="button" data-del="${i}" aria-label="이 열 빼기">×</button></li>`).join("");
+  $("#cols").querySelectorAll("input").forEach(el=>el.addEventListener("input",()=>{
+    const c=S.cols[+el.dataset.i];
+    if(el.dataset.f==="c"){el.value=el.value.toUpperCase().replace(/[^A-Z]/g,"");c.c=el.value}else c.t=el.value;
+    edited();
+  }));
+  $("#cols").querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{S.cols.splice(+b.dataset.del,1);renderCols();edited()});
 }
-function renderForm(){
-  $("#qform").innerHTML=cur.fields.map(f=>{
-    const hid=visible(f)?"":" hidden", id="f_"+f.k, hint=f.hint?`<small>${f.hint}</small>`:"";
-    if(f.t==="bool") return `<div class="q toggle"${hid}><input type="checkbox" id="${id}" data-k="${f.k}" ${vals[f.k]?"checked":""}><label for="${id}">${f.label}</label></div>`;
-    const num=f.t==="num", ex=f.t==="range"?"예) A7:A18":f.t==="cell"?"예) A7":"";
-    return `<div class="q"${hid}><label for="${id}">${f.label}${hint||(ex?`<small>${ex}</small>`:"")}</label><input type="${num?"number":"text"}" id="${id}" data-k="${f.k}" value="${vals[f.k]}" ${num?'inputmode="numeric"':'autocapitalize="characters" spellcheck="false"'}></div>`;
-  }).join("");
-  $("#qform").querySelectorAll("input").forEach(el=>{
-    el.addEventListener(el.type==="checkbox"?"change":"input",()=>{
-      const f=cur.fields.find(x=>x.k===el.dataset.k);
-      if(f.t==="bool"){vals[f.k]=el.checked;renderForm()}
-      else if(f.t==="num") vals[f.k]=el.value.trim();
-      else{vals[f.k]=el.value.toUpperCase().replace(/\s/g,"").replace(/[~∼]/g,":");el.value=vals[f.k]}
-      reset(); update();
-    });
-  });
-}
+$("#addCol").onclick=()=>{
+  const used=S.cols.map(c=>colNum(c.c)).filter(n=>n>0);
+  S.cols.push({c:colName((used.length?Math.max(...used):0)+1),t:""});renderCols();edited();
+  $("#cols").querySelector("li:last-child input:nth-child(2)").focus();
+};
+$("#wish").addEventListener("input",e=>{S.wish=e.target.value;edited()});
+["header","from","to"].forEach(k=>$("#"+k).addEventListener("input",e=>{S[k]=e.target.value.trim();edited()}));
+$("#out").addEventListener("input",e=>{e.target.value=e.target.value.toUpperCase().replace(/\s/g,"");S.out=e.target.value;edited()});
+
 function validate(){
-  const bad=[];
-  for(const f of cur.fields){
-    if(!visible(f)||f.t==="bool") continue;
-    const v=String(vals[f.k]); let ok=true;
-    if(f.t==="cell") ok=RE.cell.test(v);
-    if(f.t==="range"){const m=v.match(RE.range);ok=!!m&&m[1]===m[3]&&+m[2]<=+m[4]}
-    if(f.t==="num") ok=/^\d+$/.test(v)&&(f.k==="month"?+v>=1&&+v<=12:+v>=1900&&+v<=9999);
-    $("#f_"+f.k)?.setAttribute("aria-invalid",String(!ok));
-    if(!ok) bad.push(f.label);
-  }
+  const bad=[], mark=(el,ok)=>el.setAttribute("aria-invalid",String(!ok));
+  const h=+S.header, f=+S.from, t=S.to===""?null:+S.to;
+  if(!S.wish.trim()) bad.push("하고 싶은 일을 써 주세요");
+  const okH=Number.isInteger(h)&&h>=1; mark($("#header"),okH); if(!okH) bad.push("제목 줄 행 번호");
+  const okF=Number.isInteger(f)&&f>h; mark($("#from"),okF); if(!okF) bad.push("자료 시작 행은 제목 줄보다 아래여야 해요");
+  const okT=t===null||(Number.isInteger(t)&&t>=f); mark($("#to"),okT); if(!okT) bad.push("자료 끝 행");
+  const okO=!S.out||RE.cell.test(S.out); mark($("#out"),okO); if(!okO) bad.push("결과 칸은 F7처럼 써요");
+  const letters=S.cols.map(c=>c.c);
+  S.cols.forEach((c,i)=>{const ok=RE.col.test(c.c)&&letters.indexOf(c.c)===i;mark($(`#cols input.letter[data-i="${i}"]`),ok);if(!ok) bad.push(`열 문자 '${c.c||"빈칸"}'`)});
+  if(!S.cols.some(c=>c.t.trim())) bad.push("열 제목을 하나 이상 적어 주세요");
+  const all=[S.wish,...S.cols.map(c=>c.t)].join(" ");
+  if(REAL.some(re=>re.test(all))) bad.unshift("진짜 전화번호나 주민번호처럼 보여요. 지워 주세요");
   return bad;
 }
-const paint=f=>f.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/(\$?[A-Z]{1,3}\$?\d+(?::\$?[A-Z]{1,3}\$?\d+)?)(?![^"]*"(?:[^"]*"[^"]*")*[^"]*$)/g,'<span class="ref">$1</span>');
-let lastFormula="";
+
+/* 미리보기와 질문 표가 같은 모양: 제목 줄 + 자료 3줄 + … */
+function table(){
+  const cols=S.cols.filter(c=>RE.col.test(c.c)).sort((a,b)=>colNum(a.c)-colNum(b.c));
+  const outCol=RE.cell.test(S.out)?S.out.match(/[A-Z]+/)[0]:null, outRow=outCol?+S.out.match(/\d+/)[0]:null;
+  const maxC=Math.min(Math.max(...cols.map(c=>colNum(c.c)),outCol?colNum(outCol):0,1),40);
+  const h=+S.header||6, f=+S.from||h+1, rows=[h,f,f+1,f+2];
+  const by=Object.fromEntries(cols.map(c=>[c.c,c]));
+  const cell=(L,r)=>{
+    const c=by[L]; if(!c) return "";
+    if(r===h) return c.t.trim();
+    if(L===outCol) return "";
+    const i=r-f, v=c.vals?c.vals[i]:fakeFor(c.t)[i];
+    return v===undefined?"":(typeof v==="number"?v.toLocaleString("ko-KR"):String(v));
+  };
+  return {letters:Array.from({length:maxC},(_,i)=>colName(i+1)),rows,cell,outCol,outRow,h,f};
+}
+function renderGrid(T){
+  let g="<thead><tr><th></th>"+T.letters.map(L=>`<th>${L}</th>`).join("")+"</tr></thead><tbody>";
+  for(const r of T.rows){
+    g+=`<tr><th>${r}</th>`+T.letters.map(L=>{
+      const isOut=L===T.outCol&&r===T.outRow, v=T.cell(L,r);
+      return `<td class="${r===T.h&&v?"h":""}${isOut?" out":""}">${isOut&&!v?"여기":esc(v)}</td>`;
+    }).join("")+"</tr>";
+  }
+  g+=`<tr class="more"><th>⋮</th>${T.letters.map(()=>"<td>⋮</td>").join("")}</tr></tbody>`;
+  $("#grid").innerHTML=g;
+  $("#namebox").textContent=S.out&&RE.cell.test(S.out)?S.out:"";
+}
+function md(T){
+  const clean=s=>String(s).replace(/\|/g,"/");
+  const lines=["| | "+T.letters.join(" | ")+" |","|---|"+T.letters.map(()=>"---").join("|")+"|"];
+  for(const r of T.rows) lines.push(`| ${r} | `+T.letters.map(L=>clean(T.cell(L,r))).join(" | ")+" |");
+  lines.push("| … |"+T.letters.map(()=>" ").join("|")+"|");
+  return lines.join("\n");
+}
+function prompt(T){
+  const to=S.to?`${S.to}행`:"아래쪽";
+  return `당신은 농협 직원을 돕는 엑셀 선생님입니다.
+제 엑셀은 2021 이상입니다. 그 버전에서 되는 함수만 써 주세요.
+
+[하고 싶은 일]
+${S.wish.trim()}
+
+[제 표 모양] 값은 가짜입니다.
+- ${T.h}행이 제목 줄이고, 자료는 ${T.f}행부터 ${to}까지 있습니다.
+- ${S.out?`결과는 ${S.out} 칸에 내고 싶습니다.`:"결과를 낼 칸은 알맞게 정해 주세요."}
+
+${md(T)}
+
+[답하는 방법]
+1. 설명은 최대한 짧고 간결하게, 3줄 이내로 해 주세요.
+2. 먼저 제 엑셀 화면과 같은 행·열 구조의 표를 그려 주세요. 맨 위 줄은 열 문자, 맨 왼쪽 칸은 행 번호로 하고, 수식을 넣을 칸에 "← 여기"라고 표시해 주세요.
+3. 표 아래에 "○○ 칸에 이 수식을 입력하세요"와 수식 한 줄을 써 주세요. 아래로 채워야 하면 어디까지 채우는지도 한 줄로 알려 주세요.
+4. 맞았는지 확인하는 방법을 한 줄로 알려 주세요.
+5. 함수가 왜 그렇게 작동하는지는 제가 물어볼 때만 설명해 주세요.
+6. 표 모양 정보가 부족해서 답하기 어려우면, 답하기 전에 한 번만 짧게 물어봐 주세요.
+7. 제가 진짜 이름·전화번호 같은 개인정보를 붙여 넣으면, 멈추고 가짜 값으로 바꾸라고 알려 주세요.`;
+}
+let lastPrompt="";
 function update(){
-  const bad=validate();
-  $("#err").hidden=!bad.length;
-  $("#err").textContent=bad.length?`다시 확인해 주세요: ${bad.join(", ")}. 곳은 A7:A18처럼 '첫 칸:마지막 칸', 칸은 A7처럼 써요.`:"";
-  $("#where").textContent=`${cur.out} 칸에 이렇게 치세요`;
-  if(bad.length){reset();$("#formula").textContent="—";lastFormula="";$("#mean").innerHTML="";$("#answer").hidden=true;$("#show").hidden=$("#seg").hidden=true;renderGrid({});return}
-  lastFormula=cur.build(vals);
-  $("#formula").innerHTML=paint(lastFormula);
-  $("#mean").innerHTML=cur.mean(vals).map(l=>`<li>${l}</li>`).join("");
-  $("#more").innerHTML=cur.more(vals).map(l=>`<li>${l}</li>`).join("");
-  const res=isDefault()?cur.results(vals):null;
-  if(!res) reset();
-  $("#show").hidden=$("#seg").hidden=!res;
-  $("#seg").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String((b.dataset.p==="after")===(phase==="after"))));
-  $("#answer").hidden=phase!=="after";
-  $("#answer").textContent="엔터를 치면 → "+val(cur.answer,vals);
-  if(!res){$("#answer").hidden=false;$("#answer").textContent=isDefault()?"연습 표에는 2026년 9월·10월 자료만 있어요. 결과는 엑셀에서 직접 확인하세요.":"내 표로 바꿨어요. 결과는 엑셀에서 직접 확인하세요.";}
-  $("#copied").hidden=true;
-  renderGrid(phase==="after"&&res?res:{});
-  renderPrompt();
+  const bad=validate(), T=table();
+  $("#err").hidden=!bad.length; $("#err").textContent=bad.length?"확인해 주세요: "+bad.join(" · "):"";
+  renderGrid(T);
+  lastPrompt=bad.length?"":prompt(T);
+  $("#prompt").textContent=lastPrompt||"위 1·2번을 채우면 여기에 질문이 만들어져요.";
+  $("#copy").disabled=!lastPrompt; $("#copied").hidden=true;
+  $("#keybox").hidden=!ex;
+  if(ex) $("#key").innerHTML=`<p style="margin:0 0 6px"><code>${esc(ex.key.formula)}</code></p><p style="margin:0">${esc(ex.key.how)} 결과: ${esc(ex.key.result)}</p><p class="cap">AI 수식이 달라도 결과가 같으면 맞아요.</p>`;
 }
-async function play(){
-  const id=++playId, f=lastFormula;
-  phase="typing"; typed=""; entering=false; update();
-  $("#xlsec").scrollIntoView({behavior:"smooth",block:"start"});
-  if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
-    await wait(700);
-    // 수식 길이와 상관없이 약 1.6초에 다 친다
-    const t0=performance.now();
-    while(typed.length<f.length){
-      if(id!==playId)return;
-      typed=f.slice(0,Math.ceil(f.length*Math.min(1,(performance.now()-t0)/1600)));update();await wait(30);
-    }
-    entering=true; update(); await wait(700);
-  }
-  if(id!==playId)return;
-  phase="after"; entering=false; update();
-}
-function usedCells(){
-  const set=new Set();
-  for(const f of cur.fields){
-    if(!visible(f)) continue;
-    const v=String(vals[f.k]);
-    if(f.t==="range"){const m=v.match(RE.range);if(m) for(let r=+m[2];r<=+m[4];r++) set.add(m[1]+r)}
-    if(f.t==="cell"&&RE.cell.test(v)){const m=v.match(/([A-Z]+)(\d+)/);const n=["key","tel"].includes(f.k)?(cur.down||1):1;for(let r=+m[2];r<+m[2]+n;r++) set.add(m[1]+r)}
-  }
-  return set;
-}
-function renderGrid(res){
-  const sh=cur.sheet, cols=Object.keys(sh).map(colNum);
-  const c2=Math.min(Math.max(...cols),26), maxLen=Math.max(...Object.values(sh).map(a=>a.length));
-  const r2=Math.max(5+maxLen,10), used=usedCells(), outCol=cur.out.match(/[A-Z]+/)[0], outRow=+cur.out.match(/\d+/)[0];
-  const outCells=new Set(Array.from({length:cur.down||1},(_,i)=>outCol+(outRow+i)));
-  let h="<thead><tr><th></th>"; for(let c=1;c<=c2;c++) h+=`<th>${colName(c)}</th>`; h+="</tr></thead><tbody>";
-  for(let r=6;r<=r2;r++){
-    h+=`<tr><th>${r}</th>`;
-    for(let c=1;c<=c2;c++){
-      const L=colName(c), arr=sh[L], id=L+r; let v=arr&&arr[r-6]; let cls=[];
-      if(r===6&&v!==undefined) cls.push("h");
-      if(used.has(id)) cls.push("in");
-      if(id in res) v=res[id];
-      if(outCells.has(id)||id in res){cls.push("out");if(v===undefined){cls.push("empty");v=id===cur.out&&phase==="before"?"여기":""}}
-      if(id===cur.out) cls.push("sel");
-      let t=esc(v===undefined?"":(typeof v==="number"?v.toLocaleString("ko-KR"):v));
-      if(id===cur.out&&phase==="typing"){cls.push("typing");t=`<span class="typed caret">${esc(typed)}</span>`}
-      h+=`<td class="${cls.join(" ")}">${t}</td>`;
-    }
-    h+="</tr>";
-  }
-  $("#grid").innerHTML=h+"</tbody>";
-  // 엑셀 위쪽 칸 이름 상자와 수식 입력줄
-  $("#namebox").textContent=cur.out;
-  $("#fxval").innerHTML=phase==="before"?"":phase==="typing"?esc(typed)+(entering?'<span class="enterkey">Enter ↵</span>':""):esc(lastFormula);
-  // 좁은 화면에서도 수식 치는 칸이 보이게 표를 옆으로 당긴다
-  const box=$(".gridbox"), td=$("#grid td.out");
-  if(td) box.scrollLeft=Math.max(0,td.offsetLeft+td.offsetWidth-box.clientWidth+16);
-}
-const TEACHER=`당신은 농협 직원을 가르치는 엑셀 선생님입니다. 중학생도 알아듣게 쉽게 설명해 주세요.
-제 엑셀은 2021 이상입니다. 그 버전에서 되는 함수와 기능만 알려 주세요.
-바로 답하지 말고, 제 표가 어떻게 생겼는지(몇 열에 무엇이, 몇 행부터) 먼저 물어봐 주세요.
-답은 ① 어느 칸에 ② 어떤 수식을 치는지 ③ 수식 뜻 한 줄씩 ④ 맞았는지 확인하는 방법 순서로 알려 주세요.
-더 쉬운 기능(필터·피벗 테이블·중복 제거 등)이 있으면 함께 알려 주세요.
-제가 진짜 이름·전화번호 같은 개인정보를 붙여 넣으면, 멈추고 가짜 값으로 바꾸라고 알려 주세요.`;
-function renderPrompt(){$("#prompt").textContent=`${TEACHER}\n\n하고 싶은 일: ${$("#wish").value.trim()||"(위 칸에 써 주세요)"}`}
 async function copyText(t,flag){
   try{await navigator.clipboard.writeText(t)}
   catch(e){const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(_){}ta.remove()}
   flag.hidden=false;setTimeout(()=>flag.hidden=true,2000);
 }
-$("#copy").onclick=()=>lastFormula&&copyText(lastFormula,$("#copied"));
-$("#show").onclick=play;
-$("#seg").querySelectorAll("button").forEach(b=>b.onclick=()=>{reset();phase=b.dataset.p;update()});
-$("#copyPrompt").onclick=()=>copyText($("#prompt").textContent,$("#copiedPrompt"));
-$("#wish").addEventListener("input",renderPrompt);
+$("#copy").onclick=()=>lastPrompt&&copyText(lastPrompt,$("#copied"));
 
-/* 검산용 */
-window.__check=()=>CASES.map(c=>{const v=Object.fromEntries(c.fields.map(f=>[f.k,f.v]));return {id:c.id,out:c.out,down:c.down||1,formula:c.build(v),results:c.results(v)}});
-window.__variants=()=>{const out=[];for(const c of CASES){for(const f of c.fields.filter(f=>f.t==="bool")){const v=Object.fromEntries(c.fields.map(x=>[x.k,x.v]));v[f.k]=!v[f.k];if(c.id==="sumifs"){for(const m of [9,10]){v.month=m;out.push({id:c.id+"-"+m,out:c.out,down:c.down,formula:c.build(v),results:c.results(v)})}}else out.push({id:c.id+"-"+f.k,out:c.out,down:c.down,formula:c.build(v),results:c.results(v)})}}return out};
-init();
+/* 검산·시험용 */
+window.__promptFor=id=>{load(EXAMPLES.find(e=>e.id===id));return lastPrompt};
+load(null);
 </script>
