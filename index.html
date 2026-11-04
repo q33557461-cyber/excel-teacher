@@ -33,13 +33,56 @@ h1{font-size:34px;line-height:1.15;margin:0;font-weight:800;letter-spacing:-.035
 .pill{background:var(--green);color:var(--white);border-radius:999px;padding:3px 12px;font-size:13px;font-weight:700;letter-spacing:0}
 .lead{font-size:20px;font-weight:600;margin:14px 0 24px;line-height:1.5;text-wrap:balance}
 .lead b{font-weight:800;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:4px;text-underline-offset:5px}
-.flow{display:flex;align-items:stretch;gap:8px}
-.fbox{flex:1;background:var(--white);border:1px solid var(--line);padding:12px 14px 13px}
-.fbox .dev{display:block;font-size:13px;color:var(--ink3);font-weight:600;margin-bottom:2px}
-.fbox b{font-size:16px;line-height:1.4;display:block}
-.flow .arr{align-self:center;color:var(--green);width:22px;height:22px}
 .safe{display:flex;gap:10px;align-items:flex-start;background:var(--ivory2);padding:12px 16px;margin:12px 0 0;font-size:15px;line-height:1.55}
 .safe svg{margin-top:2px;color:var(--green)}
+
+/* ── 사용법 안내 ── */
+.guide{background:var(--white);border:1px solid var(--line);padding:22px 22px 20px;scroll-margin-top:64px}
+.ghead{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
+.ghead h2{font-size:24px;margin:0}
+.gtime{font-size:14.5px;color:var(--ink3);font-weight:600}
+.gneed{margin:6px 0 16px;font-size:15px;color:var(--ink2)}
+.gneed b{color:var(--ink);margin-right:8px}
+.gsteps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.gstep{display:flex;flex-direction:column;gap:8px;min-width:0}
+.gstep>b{font-size:16.5px;display:flex;align-items:center;gap:2px}
+.gstep p{margin:0;font-size:14.5px;color:var(--ink2);line-height:1.5}
+.pic{height:104px;background:var(--ivory);border:1px solid var(--ivory3);display:flex;align-items:center;justify-content:center;padding:8px;overflow:hidden}
+.m-tiles{display:flex;flex-direction:column;gap:4px;width:100%;max-width:150px}
+.mt{font-size:11.5px;font-weight:700;background:var(--white);border:1px solid var(--line);padding:3px 7px;line-height:1.3}
+.mt.on{border-color:var(--green);background:var(--greent);box-shadow:inset 0 0 0 1px var(--green)}
+.m-grid{border-collapse:collapse;font-size:10.5px;background:var(--white);letter-spacing:0}
+.m-grid th,.m-grid td{border:1px solid var(--grid);padding:2px 4px;white-space:nowrap;line-height:1.35}
+.m-grid th{background:var(--head);color:var(--ink3);font-weight:600}
+.m-grid td.here{color:var(--green);font-weight:800;box-shadow:inset 0 0 0 2px var(--green)}
+.m-ask{display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--green)}
+.m-ask svg{width:16px;height:16px;transform:rotate(90deg)}
+.m-btn{background:var(--ink);color:var(--white);font-size:11.5px;font-weight:700;padding:6px 8px;border:2px solid var(--gold);white-space:nowrap}
+.m-chat{background:var(--white);border:1px solid var(--line);font-size:11.5px;font-weight:700;color:var(--ink);padding:5px 8px;border-radius:10px 10px 10px 0;line-height:1.35}
+.m-xl{display:flex;flex-direction:column;width:100%;max-width:170px;background:var(--white);border:1px solid #BDBEB4;font-size:11px}
+.m-fx{font-family:var(--mono);font-weight:700;padding:4px 6px;border-bottom:1px solid var(--grid);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:0}
+.m-fx i{font-family:Georgia,serif;color:var(--ink3);font-weight:400;margin-right:6px}
+.m-cell{align-self:flex-start;margin:6px;padding:3px 6px;box-shadow:inset 0 0 0 2px var(--green);color:var(--green);font-weight:800;letter-spacing:0}
+.gelse{display:flex;gap:6px;align-items:flex-start;margin:16px 0 0;font-size:15px}
+.gelse .n{margin-top:2px}
+.gbtns{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center;margin-top:14px}
+.gprep{margin-top:16px;padding:14px 16px;border:2px solid var(--green);background:var(--greent)}
+.gprep .gph{display:block;color:var(--green);font-weight:800;margin-bottom:6px}
+.gprep ol{list-style:none;margin:0;padding:0;font-size:15px}
+.gprep li{display:grid;grid-template-columns:30px 1fr;margin:4px 0;line-height:1.55}
+.gprep li .n{margin-top:2px}
+
+/* ── 단계 막대(스크롤해도 위에 보임) ── */
+.stepbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;display:flex;gap:2px;margin:24px -20px 0;padding:8px 20px;background:var(--ivory);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.stepbar::-webkit-scrollbar{display:none}
+.stepbar button{display:inline-flex;align-items:center;gap:6px;flex:none;border:0;background:transparent;padding:6px 10px;font-size:14.5px;font-weight:700;color:var(--ink3);cursor:pointer;white-space:nowrap}
+.stepbar button .n{background:var(--ink4);margin:0}
+.stepbar button:hover{color:var(--ink)}
+.stepbar button[aria-current="step"]{color:var(--green);background:var(--greent)}
+.stepbar button[aria-current="step"] .n{background:var(--green)}
+.stepbar .sb-guide{border-right:1px solid var(--line);margin-right:4px;color:var(--green)}
+section.step{scroll-margin-top:64px}
+.stepbar+section.step{border-top:0;margin-top:8px}
 
 /* ── 단계 ── */
 section.step{margin-top:44px;padding-top:36px;border-top:1px solid var(--line)}
@@ -80,6 +123,9 @@ details.help li{margin:3px 0}
 .check{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;font-weight:600;cursor:pointer;margin:4px 0 0;width:fit-content}
 .check input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--green);flex:none}
 .check span small{display:block;font-weight:500;color:var(--ink3);font-size:14px}
+.special{margin-top:8px;padding:12px 16px;background:var(--white);border:1px solid var(--line)}
+.special .far{margin-top:12px;padding-top:12px;border-top:1px solid var(--ivory3)}
+.rowtip{margin:-6px 0 6px}
 
 .sheet{border:1px solid #BDBEB4;background:var(--white);margin-top:16px}
 .sheetbar{display:flex;align-items:stretch;border-bottom:1px solid var(--grid);min-height:40px;font-size:14.5px}
@@ -206,11 +252,15 @@ footer{margin-top:52px;color:var(--ink3);font-size:13.5px;border-top:1px solid v
   .wrap{padding-block:24px 56px}
   h1{font-size:28px}
   .lead{font-size:18px}
-  .flow{flex-direction:column;gap:2px}
-  .fbox{padding:8px 12px}
-  .fbox .dev{display:inline;margin:0 6px 0 0}
-  .fbox b{display:inline;font-size:15px}
-  .flow .arr{transform:rotate(90deg);width:14px;height:14px}
+  .guide{padding:18px 16px}
+  .gsteps{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px}
+  .pic{height:92px;padding:6px}
+  .stepbar{margin-inline:-20px;padding-inline:14px}
+  .stepbar{gap:0;padding-inline:4px}
+  .stepbar button{padding:6px 4px;gap:3px;font-size:13.5px}
+  .stepbar .lg{display:none}
+  .stepbar .n{width:20px;height:20px;font-size:12px}
+  .stepbar .sb-guide{margin-right:2px;padding-right:8px}
   .hint{margin-left:0}
   h2{font-size:21px}
   .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -230,45 +280,94 @@ footer{margin-top:52px;color:var(--ink3);font-size:13.5px;border-top:1px solid v
 <div class="wrap">
 <header>
   <div class="brand"><span class="mark" aria-hidden="true"></span><h1>엑셀 선생님</h1><span class="pill">엑셀 2021 이상</span></div>
-  <p class="lead">내 엑셀 표 <b>모양</b>만 알려 주면, AI에게 물어볼 질문을 대신 써 드려요.</p>
-  <div class="flow" role="list" aria-label="쓰는 순서">
-    <div class="fbox" role="listitem"><span class="dev">이 앱 · 노트북·휴대폰</span><b>표 모양을 따라 그려요</b></div>
-    <svg class="i arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"/></svg>
-    <div class="fbox" role="listitem"><span class="dev">AI · 챗지피티·클로드</span><b>질문을 붙여 넣고 수식을 받아요</b></div>
-    <svg class="i arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"/></svg>
-    <div class="fbox" role="listitem"><span class="dev">엑셀 · 업무 PC</span><b>수식을 보면서 직접 쳐요</b></div>
-  </div>
-  <p class="safe"><svg class="i" viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="9" width="12" height="8"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></svg>
-  <span><b>진짜 이름·전화번호·금액은 넣지 않아요.</b> 표의 값은 앱이 가짜로 채워요. 앱은 전화번호·주민번호·이메일 모양만 알아보고, <b>이름은 알아보지 못하니</b> 직접 조심해 주세요.</span></p>
+  <p class="lead">엑셀 수식이 필요할 때, <b>AI에게 물어볼 질문</b>을 대신 써 주는 앱이에요.</p>
 </header>
 
-<section class="step" aria-labelledby="h1s">
+<section class="guide" id="guide" aria-labelledby="gh">
+  <div class="ghead"><h2 id="gh">이렇게 써요</h2><span class="gtime">4단계 · 처음이면 1분만 읽어 주세요</span></div>
+  <p class="gneed"><b>준비물</b> 노트북이나 휴대폰(이 앱·챗지피티) 하나, 그리고 업무 PC 엑셀</p>
+  <ol class="gsteps">
+    <li class="gstep">
+      <div class="pic" aria-hidden="true"><div class="m-tiles"><span class="mt">안 온 사람 찾기</span><span class="mt on">전화번호 가리기</span><span class="mt">사업장별 합계</span></div></div>
+      <b><span class="n">1</span>할 일 고르기</b>
+      <p>하고 싶은 일과 가장 비슷한 것을 눌러요.</p>
+    </li>
+    <li class="gstep">
+      <div class="pic" aria-hidden="true"><table class="m-grid"><tr><th></th><th>A</th><th>B</th><th>C</th></tr><tr><th>1</th><td><b>성명</b></td><td><b>전화번호</b></td><td><b>가린 번호</b></td></tr><tr><th>2</th><td>김하늘</td><td>010-…</td><td class="here">← 여기</td></tr></table></div>
+      <b><span class="n">2</span>내 표 따라 그리기</b>
+      <p>업무 PC 엑셀을 보면서 <b>열 이름과 줄 번호만</b> 적고, 답이 나올 칸을 눌러요.</p>
+    </li>
+    <li class="gstep">
+      <div class="pic" aria-hidden="true"><div class="m-ask"><span class="m-btn">질문 복사하기</span><svg class="i" viewBox="0 0 20 20"><path d="M3 10h13M11 5l5 5-5 5"/></svg><span class="m-chat">챗지피티에 붙여 넣기</span></div></div>
+      <b><span class="n">3</span>AI에게 묻기</b>
+      <p>「질문 복사하기」를 누르고 챗지피티 새 대화에 붙여 넣어요.</p>
+    </li>
+    <li class="gstep">
+      <div class="pic" aria-hidden="true"><div class="m-xl"><span class="m-fx"><i>fx</i>=LEFT(B2,3)&amp;"-****-"…</span><span class="m-cell">010-****-1001</span></div></div>
+      <b><span class="n">4</span>엑셀에 치기</b>
+      <p>AI가 준 수식을 업무 PC 엑셀에 <b>보면서 똑같이</b> 쳐요.</p>
+    </li>
+  </ol>
+  <p class="gelse"><span class="n">5</span><span><b>안 되면</b> 나온 오류를 고르면, 같은 대화에 다시 물어볼 말을 만들어 드려요.</span></p>
+  <p class="safe"><svg class="i" viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="9" width="12" height="8"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></svg>
+  <span><b>진짜 이름·전화번호·금액은 어디에도 넣지 않아요.</b> 표의 값은 앱이 가짜로 채워요. 앱은 전화번호·주민번호·이메일 모양만 알아보고, <b>이름은 알아보지 못하니</b> 직접 조심해 주세요.</span></p>
+  <div class="gprep">
+    <b class="gph">처음이면 연습부터 해 보세요</b>
+    <ol>
+      <li><span class="n">1</span><span>엑셀을 칠 PC에서 <a href="엑셀선생님_연습.xlsx">연습 파일(엑셀선생님_연습.xlsx)</a>을 받아 엑셀로 열어요.</span></li>
+      <li><span class="n">2</span><span>엑셀 맨 아래 시트 이름 중 <b>「5_전화번호 가운데 가리기」</b>를 눌러요.</span></li>
+      <li><span class="n">3</span><span>아래 「연습 예시로 한 번 해 보기」를 누르면 이 앱에도 같은 표가 채워져요.</span></li>
+    </ol>
+  </div>
+  <div class="gbtns">
+    <button class="btn big" type="button" id="gTry">연습 예시로 한 번 해 보기</button>
+    <button class="btn ghost" type="button" id="gMine">내 표로 바로 시작</button>
+  </div>
+</section>
+
+<nav class="stepbar" id="stepbar" aria-label="사용 순서">
+  <button type="button" data-go="guide" class="sb-guide">사용법</button>
+  <button type="button" data-go="s1"><span class="n">1</span><span>할 일</span></button>
+  <button type="button" data-go="s2"><span class="n">2</span><span>내 표</span></button>
+  <button type="button" data-go="s3"><span class="n">3</span><span><span class="lg">AI에게 </span>묻기</span></button>
+  <button type="button" data-go="s4"><span class="n">4</span><span><span class="lg">엑셀에 </span>치기</span></button>
+  <button type="button" data-go="s5"><span class="n">5</span><span>안 되면</span></button>
+</nav>
+
+<section class="step" id="s1" aria-labelledby="h1s">
   <h2 id="h1s"><span class="num">1</span>어떤 일을 하고 싶나요?</h2>
-  <p class="hint">가까운 것을 고르면 연습 파일 예시로 채워져요. 내 표로는 2번에서 바꿔요.</p>
+  <p class="hint">가장 비슷한 것을 누르면 연습용 예시가 미리 채워져요. 내 표는 2번에서 바꿔요.</p>
   <div class="tiles" id="tiles" role="radiogroup" aria-label="하고 싶은 일"></div>
   <label class="fl" for="wish">하고 싶은 일 <small>한두 줄로</small></label>
   <textarea id="wish" rows="3" placeholder="예) 대출 만기일이 30일 안 남은 사람만 표시하고 싶어요"></textarea>
 </section>
 
-<section class="step" aria-labelledby="h2s">
+<section class="step" id="s2" aria-labelledby="h2s">
   <h2 id="h2s"><span class="num">2</span>내 표를 똑같이 따라 그려요</h2>
-  <p class="hint">업무 PC 엑셀 화면을 보면서 <b>열 제목과 행 번호만</b> 적어요. 칸 안의 값은 앱이 가짜로 채워요.</p>
+  <p class="hint">업무 PC 엑셀 화면을 보면서 <b>열 이름과 줄 번호만</b> 적어요. 칸 안의 값은 앱이 가짜로 채워요.</p>
   <div class="exbar" id="exbar" hidden></div>
-  <p class="sentence">제목은 <input id="header" inputmode="numeric" autocomplete="off" aria-label="제목 줄 행 번호">행에 있고,
-    자료는 <input id="from" inputmode="numeric" autocomplete="off" aria-label="자료 시작 행">행부터 <input id="to" inputmode="numeric" autocomplete="off" aria-label="자료 끝 행">행까지예요. <span class="aside" id="toAside" hidden>(가장 긴 열 기준)</span></p>
+  <p class="sentence">열 이름은 <input id="header" inputmode="numeric" autocomplete="off" aria-label="열 이름이 적힌 줄 번호">번 줄에 있고,
+    자료는 <input id="from" inputmode="numeric" autocomplete="off" aria-label="자료 첫 줄 번호">번 줄부터 <input id="to" inputmode="numeric" autocomplete="off" aria-label="자료 마지막 줄 번호">번 줄까지예요. <span class="aside" id="toAside" hidden>(가장 긴 표 기준)</span></p>
+  <p class="cap rowtip">줄 번호는 엑셀 화면 <b>맨 왼쪽 회색 숫자</b>예요.</p>
   <details class="help">
-    <summary><svg class="i" viewBox="0 0 20 20" aria-hidden="true"><path d="M8 5l5 5-5 5"/></svg>끝 행은 어떻게 찾나요?</summary>
+    <summary><svg class="i" viewBox="0 0 20 20" aria-hidden="true"><path d="M8 5l5 5-5 5"/></svg>마지막 줄 번호는 어떻게 찾나요?</summary>
     <ol>
-      <li><b>중간에 빈칸이 없는 열</b>(번호·이름 열)에서 첫 자료 칸을 눌러요.</li>
-      <li><kbd>Ctrl</kbd>+<kbd>↓</kbd>를 누르면 빈칸 바로 앞 칸으로 내려가요. 왼쪽의 행 번호를 적어요.</li>
-      <li>그 아래로 조금 더 내려서 <b>자료가 더 없는지</b> 눈으로 봐요. 중간에 빈칸이 있으면 <kbd>Ctrl</kbd>+<kbd>↓</kbd>는 거기서 멈춰요.</li>
+      <li><b>중간에 빈칸이 없는 열</b>(번호나 이름 열)에서 첫 번째 칸을 눌러요.</li>
+      <li><kbd>Ctrl</kbd>을 누른 채 <kbd>↓</kbd>를 누르면 자료 맨 끝 칸으로 내려가요. 맨 왼쪽 줄 번호를 적어요.</li>
+      <li>그 아래로 조금 더 내려서 <b>자료가 더 없는지</b> 눈으로 봐요. 중간에 빈칸이 있으면 거기서 멈추거든요.</li>
     </ol>
   </details>
-  <label class="check"><input type="checkbox" id="perCol"><span>열마다 자료 끝 행이 달라요<small>명단이 두 개이거나, 옆에 기준표·합계표가 따로 있을 때. 표 아래에 「끝」 줄이 생겨요. 제목 줄·시작 행이 다른 표는 1번 문장에 따로 적어요.</small></span></label>
+  <details class="help" id="special">
+    <summary><svg class="i" viewBox="0 0 20 20" aria-hidden="true"><path d="M8 5l5 5-5 5"/></svg>표가 두 개이거나, 오른쪽으로 아주 넓으면</summary>
+    <div class="special">
+      <label class="check"><input type="checkbox" id="perCol"><span>표마다 마지막 줄이 달라요<small>명단이 두 개이거나, 옆에 작은 표(품목 목록·합계표)가 따로 있을 때. 표 아래에 「끝 줄」이 생겨서 열마다 마지막 줄 번호를 적을 수 있어요. 열 이름 줄·첫 줄까지 다른 표는 1번 문장에 따로 적어요.</small></span></label>
+      <div class="far"><label for="farLetter">멀리 떨어진 열(예: AO열)도 넣기</label><input id="farLetter" maxlength="3" autocomplete="off" spellcheck="false" autocapitalize="characters" placeholder="AO" aria-label="넣을 열의 알파벳"><button class="btn ghost sm" type="button" id="farAdd">그 열 넣기</button><span id="farMsg"></span></div>
+    </div>
+  </details>
 
   <div class="sheet" aria-label="내 표 그리기">
     <div class="sheetbar">
-      <div class="nb"><label for="namebox">결과 칸</label><input id="namebox" maxlength="10" autocomplete="off" spellcheck="false" autocapitalize="characters" placeholder="F7"></div>
+      <div class="nb"><label for="namebox">답이 나올 칸</label><input id="namebox" maxlength="10" autocomplete="off" spellcheck="false" autocapitalize="characters" placeholder="F7"></div>
       <span class="fx" aria-hidden="true">fx</span>
       <span class="fxtext" id="fxtext"></span>
     </div>
@@ -276,12 +375,11 @@ footer{margin-top:52px;color:var(--ink3);font-size:13.5px;border-top:1px solid v
   </div>
   <div class="confirm" id="confirm" role="alert" hidden></div>
   <p class="cap" id="scrollHint" hidden>표를 옆으로 밀면 다른 열도 보여요.</p>
-  <p class="cap">맨 윗줄 칸에 열 제목을 적고, <b>결과가 나올 칸</b>을 눌러 「← 여기」로 표시해요. AI에게도 이 모양 그대로 가요.</p>
-  <div class="far"><label for="farLetter">멀리 떨어진 열이 있으면</label><input id="farLetter" maxlength="3" autocomplete="off" spellcheck="false" autocapitalize="characters" placeholder="AO" aria-label="추가할 열 문자"><button class="btn ghost sm" type="button" id="farAdd">그 열 넣기</button><span id="farMsg"></span></div>
+  <p class="cap"><b>①</b> 표 맨 윗줄에 열 이름(성명, 전화번호 같은 것)을 적어요. <b>②</b> <b>답이 나올 칸</b>을 눌러 「← 여기」로 표시해요. AI에게도 이 모양 그대로 가요.</p>
   <div class="err" id="err" role="status" hidden></div>
 </section>
 
-<section class="step" aria-labelledby="h3s">
+<section class="step" id="s3" aria-labelledby="h3s">
   <h2 id="h3s"><span class="num">3</span>질문을 복사해서 AI에게 붙여 넣어요</h2>
   <p class="hint">챗지피티나 클로드에서 <b>새 대화</b>를 열고 붙여 넣으세요.</p>
   <div class="send">
@@ -303,7 +401,7 @@ footer{margin-top:52px;color:var(--ink3);font-size:13.5px;border-top:1px solid v
   </div>
 </section>
 
-<section class="step" aria-labelledby="h4s">
+<section class="step" id="s4" aria-labelledby="h4s">
   <h2 id="h4s"><span class="num">4</span>답이 오면 업무 PC 엑셀에 직접 쳐요</h2>
   <p class="hint">AI 답을 노트북·휴대폰에 띄워 두고, 보면서 똑같이 쳐요.</p>
   <div class="answer">
@@ -334,13 +432,13 @@ footer{margin-top:52px;color:var(--ink3);font-size:13.5px;border-top:1px solid v
   </details>
 </section>
 
-<section class="step" aria-labelledby="h5s">
+<section class="step" id="s5" aria-labelledby="h5s">
   <h2 id="h5s"><span class="num">5</span>안 되면 같은 대화에 다시 물어봐요</h2>
   <p class="hint">무엇이 나왔는지 고르면, 이어서 붙여 넣을 말을 만들어 드려요.</p>
   <div class="chips" id="errs" role="radiogroup" aria-label="무엇이 나왔나요"></div>
   <p class="errhint" id="errhint"></p>
   <div class="field"><label class="fl" for="typed">내가 친 수식 <small>그대로 옮겨 적어요</small></label><input id="typed" class="code" spellcheck="false" autocomplete="off" placeholder="=XLOOKUP(A7,…)"></div>
-  <div class="field"><label class="fl" for="rnote">더 알려 줄 것 <small>없으면 비워요</small></label><input id="rnote" autocomplete="off" placeholder="예) 9행까지만 나오고 나머지는 비어요"></div>
+  <div class="field"><label class="fl" for="rnote">더 알려 줄 것 <small>없으면 비워요</small></label><input id="rnote" autocomplete="off" placeholder="예) 9번 줄까지만 나오고 나머지는 비어요"></div>
   <div class="err" id="retryErr" role="status" hidden></div>
   <div class="retrybox">
     <pre class="prompt" id="retry"></pre>
@@ -480,7 +578,7 @@ const ICON={
 /* ── 상태 ── cols = {열문자:{t:제목, vals?:예시 값, end?:이 열 끝 행, empty?:아래가 비어 있는 결과용 열}}
    empty는 결과 칸으로 고를 때만 생긴다. 결과 칸이 다른 열로 옮겨 가도 자료 열로 바뀌지 않는다 */
 let S, ex=null, exSig="", touched=false, R;
-const blank=(type="")=>({type,wish:"",header:"",from:"",to:"",perCol:false,out:"",span:6,extra:[],cols:{}});
+const blank=(type="")=>({type,own:false,wish:"",header:"",from:"",to:"",perCol:false,out:"",span:6,extra:[],cols:{}});
 const blankR=()=>({type:ERRS[0].k,typed:"",note:""});
 R=blankR();
 const titled=()=>Object.keys(S.cols).filter(L=>okCol(L)&&S.cols[L].t.trim()).sort(byCol);
@@ -496,7 +594,7 @@ function restore(){
     if(!d||!d.S||typeof d.S!=="object"||!d.S.cols||typeof d.S.cols!=="object"||Array.isArray(d.S.cols)) return false;
     const s=Object.assign(blank(),d.S);
     for(const k of ["type","wish","header","from","to","out"]) if(typeof s[k]!=="string") s[k]="";
-    s.perCol=!!s.perCol; s.span=Number.isInteger(s.span)&&s.span>=1&&s.span<=200?s.span:6;
+    s.perCol=!!s.perCol; s.own=!!s.own; s.span=Number.isInteger(s.span)&&s.span>=1&&s.span<=200?s.span:6;
     s.extra=Array.isArray(s.extra)?s.extra.filter(okCol):[];
     const cols={};
     for(const [L,c] of Object.entries(s.cols)) if(okCol(L)&&c&&typeof c.t==="string"){
@@ -514,7 +612,7 @@ function restore(){
 /* 할 일 고르기: 처음이거나 예시를 보던 중이면 연습 예시로 채운다.
    내 표를 그리던 중이거나 내가 쓴 문장이 있으면 표와 문장은 그대로 둔다 */
 const presetWish=w=>TYPES.some(t=>(t.tpl&&t.tpl===w)||(t.ex&&t.ex.wish===w));
-function ownWork(){return !ex&&(titled().length>0||(!!S.wish.trim()&&!presetWish(S.wish)))}
+function ownWork(){return !ex&&(S.own||titled().length>0||(!!S.wish.trim()&&!presetWish(S.wish)))}
 function pick(id){
   const ty=typeOf(id);
   if(ownWork()){
@@ -538,10 +636,11 @@ function loadExample(ty){
   S.perCol=Object.values(S.cols).some(c=>c.vals&&+c.end!==maxEnd);
   if(!S.perCol) Object.values(S.cols).forEach(c=>c.end="");
   ex=e; exSig=sig(S); touched=true; R=blankR();
+  $("#special").open=S.perCol; freshTable=true; // 예시를 바꾸면 접힘 상태를 맞추고, 표는 A열부터 보여 준다
 }
 function mine(){
   const ty=typeOf(S.type);
-  S=blank(S.type); S.wish=ty.tpl; ex=null; exSig=""; touched=false; R=blankR();
+  S=blank(S.type); S.own=true; S.wish=ty.tpl; ex=null; exSig=""; touched=false; R=blankR(); $("#special").open=false; freshTable=true;
   renderTiles(); fillTop(); update(); $("#header").focus();
 }
 function loadExFromBar(){loadExample(typeOf(S.type));renderTiles();fillTop();update()}
@@ -601,7 +700,7 @@ function val(L,r,M){
 }
 
 /* 표 그리기: 모양(열·행)이 바뀔 때만 다시 만들고, 글자를 치는 동안에는 칸 내용만 고친다(한글 입력이 끊기지 않게) */
-let lastKey="", lastOut="";
+let lastKey="", lastOut="", freshTable=true; // 처음 열 때도 A열부터
 function renderSheet(M){
   const g=$("#grid"), key=JSON.stringify([M.eLetters,M.rows,S.perCol]);
   if(key!==lastKey){
@@ -612,11 +711,11 @@ function renderSheet(M){
       if(r===null){html+=`<tr class="more"><th>⋮</th>${M.eLetters.map(()=>"<td>⋮</td>").join("")}<td class="pad"></td></tr>`;continue}
       html+=`<tr><th data-row="${r}">${r}</th>`+M.eLetters.map(L=>{
         if(!L) return `<td class="gap">…</td>`;
-        if(r===M.h) return `<td class="hc"><input class="title" data-l="${L}" aria-label="${L}열 제목" autocomplete="off" spellcheck="false"></td>`;
+        if(r===M.h) return `<td class="hc"><input class="title" data-l="${L}" aria-label="${L}열 이름" autocomplete="off" spellcheck="false"></td>`;
         return `<td class="dc" data-l="${L}" data-r="${r}"></td>`;
       }).join("")+`<td class="pad"></td></tr>`;
     }
-    if(S.perCol) html+=`<tr class="endrow"><th title="이 열의 자료 끝 행">끝</th>`+M.eLetters.map(L=>L?`<td><input class="end" data-l="${L}" inputmode="numeric" autocomplete="off" aria-label="${L}열 자료 끝 행"></td>`:`<td class="gap"></td>`).join("")+`<td class="pad"></td></tr>`;
+    if(S.perCol) html+=`<tr class="endrow"><th title="이 열의 마지막 줄 번호">끝 줄</th>`+M.eLetters.map(L=>L?`<td><input class="end" data-l="${L}" inputmode="numeric" autocomplete="off" aria-label="${L}열 마지막 줄 번호"></td>`:`<td class="gap"></td>`).join("")+`<td class="pad"></td></tr>`;
     g.innerHTML=html+"</tbody>";
     $("#addCol").onclick=addCol;
     lastKey=key;
@@ -629,7 +728,7 @@ function renderSheet(M){
   g.querySelectorAll("input.title").forEach(el=>{
     const L=el.dataset.l, v=S.cols[L]?S.cols[L].t:"";
     if(el!==act&&el.value!==v) el.value=v;
-    el.placeholder=M.o&&L===M.o.c?"결과 제목":"제목";
+    el.placeholder=M.o&&L===M.o.c?"답 열 이름":"열 이름";
   });
   g.querySelectorAll("td.dc").forEach(td=>{
     const L=td.dataset.l,r=+td.dataset.r,isOut=!!(M.o&&L===M.o.c&&r===M.o.r);
@@ -641,7 +740,8 @@ function renderSheet(M){
   });
   g.querySelectorAll("th[data-col]").forEach(th=>th.classList.toggle("on",!!(M.o&&th.dataset.col===M.o.c)));
   g.querySelectorAll("th[data-row]").forEach(th=>th.classList.toggle("on",!!(M.o&&+th.dataset.row===M.o.r)));
-  if(S.out!==lastOut){lastOut=S.out;const td=g.querySelector("td.out"),box=$("#gridbox");if(td){ // 결과 칸이 가려질 때만 조금 움직인다(앞쪽 자료 열이 숨지 않게)
+  if(freshTable){freshTable=false;lastOut=S.out;$("#gridbox").scrollLeft=0} // 예시·새 표를 막 연 때는 답 칸으로 밀지 않는다
+  else if(S.out!==lastOut){lastOut=S.out;const td=g.querySelector("td.out"),box=$("#gridbox");if(td){ // 결과 칸이 가려질 때만 조금 움직인다(앞쪽 자료 열이 숨지 않게)
     const L=td.offsetLeft-42, Rt=td.offsetLeft+td.offsetWidth;
     if(Rt>box.scrollLeft+box.clientWidth) box.scrollLeft=Rt-box.clientWidth+12;
     else if(L<box.scrollLeft) box.scrollLeft=Math.max(0,L-12);
@@ -670,24 +770,24 @@ function validate(M){
   if(!S.wish.trim()) bad.push("1번에 하고 싶은 일을 적어 주세요");
   else if(/○/.test(S.wish)) bad.push("1번 문장의 ○를 내 표에 맞게 바꿔 주세요 (예: ○열 → A열)");
   const tooBig=[h,f,t].some(n=>n>LIM.row);
-  if(tooBig) bad.push("행 번호는 엑셀 끝인 1,048,576행까지예요");
-  const okH=S.header!==""&&okRow(h); mark($("#header"),okH); if(!okH&&!tooBig) bad.push("제목이 몇 행에 있는지 적어 주세요");
-  const okF=S.from!==""&&okRow(f)&&(!okH||f>h); mark($("#from"),okF); if(!okF&&!tooBig) bad.push("자료 시작 행은 제목보다 아래 행이어야 해요");
-  const okT=S.to!==""&&okRow(t)&&(!okF||t>=f); mark($("#to"),okT); if(!okT&&!tooBig) bad.push(S.to===""?"자료 끝 행을 적어 주세요 (「끝 행은 어떻게 찾나요?」 참고)":"자료 끝 행은 시작 행과 같거나 아래여야 해요");
-  if(!M.dc.length) bad.push("표 맨 윗줄에 자료가 있는 열의 제목을 하나 이상 적어 주세요");
+  if(tooBig) bad.push("줄 번호는 엑셀 맨 끝인 1,048,576까지예요");
+  const okH=S.header!==""&&okRow(h); mark($("#header"),okH); if(!okH&&!tooBig) bad.push("열 이름이 몇 번 줄에 있는지 적어 주세요");
+  const okF=S.from!==""&&okRow(f)&&(!okH||f>h); mark($("#from"),okF); if(!okF&&!tooBig) bad.push("자료 첫 줄은 열 이름 줄보다 아래여야 해요");
+  const okT=S.to!==""&&okRow(t)&&(!okF||t>=f); mark($("#to"),okT); if(!okT&&!tooBig) bad.push(S.to===""?"자료 마지막 줄 번호를 적어 주세요 (「마지막 줄 번호는 어떻게 찾나요?」 참고)":"마지막 줄은 첫 줄과 같거나 아래여야 해요");
+  if(!M.dc.length) bad.push("표 맨 윗줄에 자료가 있는 열의 이름을 하나 이상 적어 주세요");
   if(S.perCol) $("#grid").querySelectorAll("input.end").forEach(el=>{
     const L=el.dataset.l; if(!M.dc.includes(L)) return;
     const c=S.cols[L], e=c&&c.end?+c.end:t, ok=okRow(e)&&(!okF||e>=f);
-    mark(el,ok); if(!ok) bad.push(`${L}열 「끝」 행을 확인해 주세요`);
+    mark(el,ok); if(!ok) bad.push(`${L}열 「끝 줄」 번호를 확인해 주세요`);
   });
   let okO=true;
   if(S.out){
     const p=parseCell(S.out);
-    if(!p){okO=false;bad.push("결과 칸은 F7처럼 열 문자와 행 번호로 적어요")}
+    if(!p){okO=false;bad.push("답이 나올 칸은 F7처럼 열 알파벳과 줄 번호로 적어요")}
     else{
-      if(okH&&p.r<=h){okO=false;bad.push("결과 칸은 제목 줄보다 아래에서 골라 주세요")}
+      if(okH&&p.r<=h){okO=false;bad.push("답이 나올 칸은 열 이름 줄보다 아래에서 골라 주세요")}
       const c=S.cols[p.c];
-      if(c&&c.t.trim()&&!c.empty){okO=false;bad.push(`결과 칸 ${p.c}열에는 「${c.t.trim()}」 자료가 있어요. 위의 질문에 답해 주세요`)}
+      if(c&&c.t.trim()&&!c.empty){okO=false;bad.push(`${p.c}열에는 「${c.t.trim()}」 자료가 있어요. 표 아래 질문에 답해 주세요`)}
     }
   }
   mark($("#namebox"),okO);
@@ -759,6 +859,8 @@ function update(){
   renderSheet(M);
   const bad=validate(M); // 끝 행 칸은 표를 만든 뒤에 검사한다
   $("#toAside").hidden=!S.perCol;
+  $("#gMine").textContent=!ex&&(titled().length||S.wish.trim())?"내 표 이어서 하기":"내 표로 바로 시작";
+  if(S.perCol||S.extra.length) $("#special").open=true; // 쓰고 있으면 펼쳐 둔다
   {const box=$("#gridbox");$("#scrollHint").hidden=box.scrollWidth<=box.clientWidth+2}
   const show=touched&&bad.length>0;
   $("#err").hidden=!show;
@@ -768,11 +870,11 @@ function update(){
   const need=!!(p&&pc&&pc.t.trim()&&!pc.empty);
   $("#confirm").hidden=!need;
   if(need){
-    $("#confirm").innerHTML=`<p><b>${p.c}열 맨 위에 「${esc(pc.t.trim())}」 제목이 있어요.</b> 결과는 아래가 비어 있는 열에 내야 해요. ${p.c}열 ${M.f}행 아래가 정말 비어 있나요?</p><div class="btns"><button class="btn sm yes" type="button" id="cYes">네, 비어 있어요. 여기에 결과</button><button class="btn sm no" type="button" id="cNo">아니요, 다른 칸 고를게요</button></div>`;
+    $("#confirm").innerHTML=`<p><b>${p.c}열에는 「${esc(pc.t.trim())}」라는 열 이름이 있어요.</b> 답은 아래가 비어 있는 열에만 낼 수 있어요. 업무 PC 엑셀에서 ${p.c}열 ${M.f}번 줄부터 아래가 정말 비어 있나요?</p><div class="btns"><button class="btn sm yes" type="button" id="cYes">네, 비어 있어요. 여기에 답</button><button class="btn sm no" type="button" id="cNo">아니요, 다른 칸 고를게요</button></div>`;
     $("#cYes").onclick=()=>{const c=S.cols[p.c];c.empty=true;delete c.vals;touched=true;update()};
     $("#cNo").onclick=()=>{S.out="";$("#namebox").value="";update();$("#namebox").focus()};
   }
-  $("#fxtext").textContent=p?(need?`${S.out} — 위 질문에 답해 주세요`:`${S.out} 칸에 결과가 나와요`):"결과가 나올 칸을 표에서 눌러 주세요. 모르면 비워 두면 AI가 정해요.";
+  $("#fxtext").textContent=p?(need?`${S.out} — 표 아래 질문에 답해 주세요`:`${S.out} 칸에 답이 나와요`):"답이 나올 칸을 표에서 눌러 주세요. 모르면 그냥 두세요. AI가 정해요.";
   // 예시 안내 줄
   const ty=typeOf(S.type), changed=!!ex&&sig(S)!==exSig;
   if(ex){
@@ -790,7 +892,7 @@ function update(){
   if(leak) lastPrompt="";
   $("#prompt").textContent=lastPrompt||"아직 질문이 없어요.";
   $("#copy").disabled=!lastPrompt; $("#copied").hidden=$("#copyFail").hidden=true;
-  $("#why").textContent=lastPrompt?"질문에는 1번에 쓴 문장, 표의 열 제목, 앱이 만든 가짜 값이 들어가요. 문장에 진짜 이름이 없는지 한 번 더 봐요."
+  $("#why").textContent=lastPrompt?"질문에는 1번에 쓴 문장, 표의 열 이름, 앱이 만든 가짜 값이 들어가요. 문장에 진짜 이름이 없는지 한 번 더 봐요."
     :leak?`질문에 진짜 ${leak}처럼 보이는 글자가 있어서 막았어요.`
     :touched?"2번의 「확인해 주세요」를 고치면 복사할 수 있어요."
     :"1번에서 할 일을 고르면 시작돼요. 처음이면 아무거나 하나 눌러 보세요.";
@@ -850,7 +952,7 @@ $("#grid").addEventListener("input",e=>{
 $("#grid").addEventListener("click",e=>{const td=e.target.closest("td.dc");if(td) setOut(td.dataset.l+td.dataset.r)});
 $("#farAdd").onclick=()=>{
   const L=$("#farLetter").value.toUpperCase().replace(/[^A-Z]/g,"");
-  if(!okCol(L)){$("#farMsg").textContent="열 문자는 A~XFD로 적어요";return}
+  if(!okCol(L)){$("#farMsg").textContent="열은 A, B … AO처럼 알파벳으로 적어요";return}
   $("#farMsg").textContent="";
   if(colNum(L)>S.span&&!S.extra.includes(L)) S.extra.push(L);
   if(!S.cols[L]) S.cols[L]={t:""};
@@ -878,6 +980,25 @@ async function copyText(t,okFlag,failFlag,pre){
 }
 $("#copy").onclick=()=>lastPrompt&&copyText(lastPrompt,$("#copied"),$("#copyFail"),$("#prompt"));
 $("#copyRetry").onclick=()=>lastRetry&&copyText(lastRetry,$("#copiedRetry"),$("#copyFailRetry"),$("#retry"));
+
+/* 사용법 안내와 단계 막대. 시작 버튼을 누르면 안내는 접히고, 막대의 「사용법」으로 다시 연다 */
+const GKEY="excelTeacher.guide";
+const go=id=>{const el=document.getElementById(id);if(el) el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})};
+function setGuide(open){$("#guide").hidden=!open;try{sessionStorage.setItem(GKEY,open?"1":"0")}catch(e){}}
+$("#gTry").onclick=()=>{setGuide(false);loadExample(typeOf("mask"));renderTiles();fillTop();update();go("s1")}; // 그림과 같은 '전화번호 가리기'
+// 연습 예시가 채워져 있으면 비우고 내 표로, 내가 그리던 표가 있으면 그대로 이어서
+$("#gMine").onclick=()=>{
+  setGuide(false);
+  if(ex||!ownWork()){S=blank("");S.own=true;ex=null;exSig="";touched=false;R=blankR();$("#special").open=false;freshTable=true;renderTiles();fillTop();update()}
+  go("s1");
+};
+$("#stepbar").addEventListener("click",e=>{const b=e.target.closest("button[data-go]");if(!b) return;if(b.dataset.go==="guide") setGuide(true);go(b.dataset.go)});
+try{if(sessionStorage.getItem(GKEY)==="0") $("#guide").hidden=true}catch(e){}
+if("IntersectionObserver" in window){
+  const btns=[...$("#stepbar").querySelectorAll("button[data-go^='s']")];
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting) btns.forEach(b=>b.dataset.go===en.target.id?b.setAttribute("aria-current","step"):b.removeAttribute("aria-current"))}),{rootMargin:"-80px 0px -55% 0px"});
+  document.querySelectorAll("section.step").forEach(s=>io.observe(s));
+}
 
 /* 검산·시험용 */
 window.__promptFor=id=>{S=blank();ex=null;loadExample(typeOf(id));renderTiles();fillTop();update();return lastPrompt};
